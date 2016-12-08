@@ -1,38 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//using system;
+//using system.collections.generic;
+//using system.linq;
+//using system.text;
+//using system.threading.tasks;
 
-using SFML;
-using SFML.System;
-using SFML.Window;
-using SFML.Graphics;
-using SFML.Audio;
+//using sfml;
+//using sfml.system;
+//using sfml.window;
+//using sfml.graphics;
+//using sfml.audio;
 
-namespace SFML_Prog2_Gruppe1.States
-{
-    public class MainMenu : State
-    {
-        public override void Dispose()
-        {
-            throw new NotImplementedException();
-        }
+//namespace sfml_prog2_gruppe1.states
+//{
+//    public class mainmenu : state
+//    {
+//        public override void dispose()
+//        {
+//            throw new notimplementedexception();
+//        }
 
-        public override void Draw()
-        {
-            ProjectRenderWindow.GetRenderWindowInstance().Clear(Color.Red);
-        }
+//        public override void draw()
+//        {
+//            projectrenderwindow.getrenderwindowinstance().clear(color.red);
+//        }
 
-        public override void Initialize()
-        {
-            //throw new NotImplementedException();
-        }
+//        public override void initialize()
+//        {
+//            //throw new notimplementedexception();
+//        }
 
-        public override GameStates Update()
-        {
-            return GameStates.MainMenuState;
-            //throw new NotImplementedException();
-        }
-    }
-}
+//        public override gamestates update()
+//        {
+//            return gamestates.mainmenustate;
+//            //throw new notimplementedexception();
+//        }
+//    }
+//}

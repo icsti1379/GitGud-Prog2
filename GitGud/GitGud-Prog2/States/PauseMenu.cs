@@ -1,37 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//using system;
+//using system.collections.generic;
+//using system.linq;
+//using system.text;
+//using system.threading.tasks;
 
-using SFML;
-using SFML.System;
-using SFML.Window;
-using SFML.Graphics;
-using SFML.Audio;
+//using sfml;
+//using sfml.system;
+//using sfml.window;
+//using sfml.graphics;
+//using sfml.audio;
 
-namespace SFML_Prog2_Gruppe1.States
-{
-    public class PauseMenu : State
-    {
-        public override void Dispose()
-        {
-            throw new NotImplementedException();
-        }
+//namespace sfml_prog2_gruppe1.states
+//{
+//    public class pausemenu : state
+//    {
+//        public override void dispose()
+//        {
+//            throw new notimplementedexception();
+//        }
 
-        public override void Draw()
-        {
-            throw new NotImplementedException();
-        }
+//        public override void draw()
+//        {
+//            throw new notimplementedexception();
+//        }
 
-        public override void Initialize()
-        {
-            throw new NotImplementedException();
-        }
+//        public override void initialize()
+//        {
+//            throw new notimplementedexception();
+//        }
 
-        public override GameStates Update()
-        {
-            throw new NotImplementedException();
-        }
-    }
-}
+//        public override gamestates update()
+//        {
+//            throw new notimplementedexception();
+//        }
+//    }
+//}
