@@ -67,7 +67,7 @@
     </Reference>
     <Reference Include="sfmlnet-window-2, Version=2.2.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\Bibliotheken\Dokumente\VS\Erweiterungen\SFML.Net-v2.2\lib\sfmlnet-window-2.dll</HintPath>
+      <HintPath>bin\x64\Debug\sfmlnet-window-2.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -109,40 +109,34 @@
     <None Include="App.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Maps\test.csv" />
+    <None Include="Maps\test.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Sprites\chicken_walk.png" />
-    <Content Include="Sprites\male_01.png" />
-    <Content Include="SMFL-Files\csfml-audio-2.dll">
+    <Content Include="SMFL-Files\csfml-audio-2.dll" />
+    <Content Include="SMFL-Files\csfml-graphics-2.dll" />
+    <Content Include="SMFL-Files\csfml-network-2.dll" />
+    <Content Include="SMFL-Files\csfml-system-2.dll" />
+    <Content Include="SMFL-Files\csfml-window-2.dll" />
+    <Content Include="SMFL-Files\libsndfile-1.dll" />
+    <Content Include="SMFL-Files\openal32.dll" />
+    <Content Include="SMFL-Files\OpenTK.Compatibility.dll" />
+    <Content Include="SMFL-Files\OpenTK.dll" />
+    <Content Include="SMFL-Files\sfmlnet-audio-2.dll" />
+    <Content Include="SMFL-Files\sfmlnet-graphics-2.dll" />
+    <Content Include="SMFL-Files\sfmlnet-system-2.dll" />
+    <Content Include="SMFL-Files\sfmlnet-window-2.dll" />
+    <Content Include="Sprites\chicken_walk.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SMFL-Files\csfml-graphics-2.dll">
+    <Content Include="Sprites\male_01.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SMFL-Files\csfml-network-2.dll">
+    <Content Include="Maps\terrain.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SMFL-Files\csfml-system-2.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SMFL-Files\csfml-window-2.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SMFL-Files\sfmlnet-audio-2.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SMFL-Files\sfmlnet-graphics-2.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SMFL-Files\sfmlnet-system-2.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SMFL-Files\sfmlnet-window-2.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Maps\terrain.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

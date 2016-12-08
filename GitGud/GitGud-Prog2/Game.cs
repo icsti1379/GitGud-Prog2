@@ -31,7 +31,7 @@ namespace GitGudP2
             kip.Waypoints.Add(new Waypoint(50, 50));
             kip.Waypoints.Add(new Waypoint(0, 50));
 
-
+            
             Clock clock = new Clock();
 
 
