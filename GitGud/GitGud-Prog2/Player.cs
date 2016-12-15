@@ -12,7 +12,8 @@ namespace GitGudP2
 {
     class Player : AnimatedCharacter
     {
-         public Player() : base("Sprites/male_01.png", 64)
+        Vector2f playerPos;
+        public Player() : base("Sprites/male_01.png", 64)
         {
             Anim_Up = new Animation(512, 0, 9);
             Anim_Left = new Animation(578, 0, 9);
@@ -24,6 +25,7 @@ namespace GitGudP2
         }
         public override void Update(float deltaTime)
         {
+
             this.CurrentState = CharacterState.None;
 
             if (Keyboard.IsKeyPressed(Keyboard.Key.D))

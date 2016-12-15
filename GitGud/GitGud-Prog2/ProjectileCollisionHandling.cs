@@ -12,7 +12,15 @@ using System.IO;
 
 namespace GitGudP2
 {
-    class ProjectileCollisionHandling
+    class ProjectileCollisionHandling : Collisions
     {
+
+        public bool ProjectileCollision(IntRect colRect, Vector2f projPos)
+        {
+            if (CollisionCheck(colRect, projPos))
+                return true;
+            else
+                return false;
+        }
     }
 }
