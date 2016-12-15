@@ -14,7 +14,12 @@ namespace GitGudP2
 {
     class ProjectileCollisionHandling : Collisions
     {
-
+        /// <summary>
+        /// Überprüft ob ein Projectile mit einem collision Rectangle, z.b. Gegner, kollidiert
+        /// </summary>
+        /// <param name="colRect"></param>
+        /// <param name="projPos"></param>
+        /// <returns></returns>
         public bool ProjectileCollision(IntRect colRect, Vector2f projPos)
         {
             if (CollisionCheck(colRect, projPos))

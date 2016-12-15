@@ -12,15 +12,27 @@ using System.IO;
 
 namespace GitGudP2
 {
+    /// <summary>
+    /// Ummgehen mit der Kollision von einer Entity mit einem einzelnen Objekt
+    /// </summary>
     class EntityCollisionHandling : Collisions
     {
-        Vector2f playerPos;
+        /// <summary>
+        /// erstellen der verschiedenen Kollisionspunkte der Entity
+        /// </summary>
         Vector2f colBoxTop;
         Vector2f colBoxRight;
         Vector2f colBoxBottom;
         Vector2f colBoxLeft;
         int offset;
 
+        /// <summary>
+        /// Überprüft ob eine Entity mit etwas kollidiert
+        /// </summary>
+        /// <param name="colRect">Collision Rectangle</param>
+        /// <param name="pos">Position der Entity</param>
+        /// <param name="offset">breite/höhe des sprites was zumm darstellen der entity genutzt wird</param>
+        /// <returns>gibt zurück ob eine Kollision statfindet</returns>
         public bool Check(IntRect colRect, Vector2f pos, int offset)
         {
             colBoxTop.X = pos.X + offset / 2;
