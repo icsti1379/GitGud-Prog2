@@ -42,6 +42,9 @@ namespace GitGudP2
             colBoxLeft.X = pos.X;
             colBoxLeft.Y = pos.Y + offset / 2;
 
+            //TODO: playerpos anpassen: übergabewert ist tilemappos, brauche aber normale pos
+            // -> für x : (1280/2)+xpos. y: (800/2)+ypos
+
             foreach (IntRect rect in rectList)
             {
                 if (Collision.Collision.Check(rect, colBoxTop))
