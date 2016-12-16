@@ -53,8 +53,9 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Collision">
-      <HintPath>..\..\..\..\..\Collision.dll</HintPath>
+    <Reference Include="Collision, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>SMFL-Files\Collision.dll</HintPath>
     </Reference>
     <Reference Include="sfmlnet-audio-2, Version=2.2.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
@@ -115,6 +116,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="SMFL-Files\Collision.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="SMFL-Files\csfml-audio-2.dll" />
     <Content Include="SMFL-Files\csfml-graphics-2.dll" />
     <Content Include="SMFL-Files\csfml-network-2.dll" />
