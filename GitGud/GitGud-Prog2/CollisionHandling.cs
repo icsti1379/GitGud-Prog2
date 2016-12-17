@@ -20,6 +20,7 @@ namespace GitGudP2
         Vector2f colBoxBottom;
         Vector2f colBoxLeft;
         Vector2f newPos;
+        Vector2f translatedPos;
 
         /// <summary>
         /// Überprüft ob eine Entity mit dem Terrain collidiert und gibt die neue Position nach der Collision zurück
@@ -30,19 +31,22 @@ namespace GitGudP2
         /// <returns>gibt die neue Position zurück</returns>
         public Vector2f WithTerrain(List<IntRect> rectList, Vector2f pos, int offset)
         {
-            colBoxTop.X = pos.X + offset / 2;
-            colBoxTop.Y = pos.Y;
+            translatedPos.X = (1280 / 2) + pos.X;
+            translatedPos.Y = (800 / 2) + pos.Y;
 
-            colBoxRight.X = pos.X + offset;
-            colBoxRight.Y = pos.Y + offset / 2;
+            colBoxTop.X = translatedPos.X + offset / 2;
+            colBoxTop.Y = translatedPos.Y;
 
-            colBoxBottom.X = pos.X + offset / 2;
-            colBoxBottom.Y = pos.Y + offset;
+            colBoxRight.X = translatedPos.X + offset;
+            colBoxRight.Y = translatedPos.Y + offset / 2;
 
-            colBoxLeft.X = pos.X;
-            colBoxLeft.Y = pos.Y + offset / 2;
+            colBoxBottom.X = translatedPos.X + offset / 2;
+            colBoxBottom.Y = translatedPos.Y + offset;
 
-            //TODO: playerpos anpassen: übergabewert ist tilemappos, brauche aber normale pos
+            colBoxLeft.X = translatedPos.X;
+            colBoxLeft.Y = translatedPos.Y + offset / 2;
+
+            //TODO: playerpos anpassen: übergabewert ist tilemaps, brauche aber normale pos
             // -> für x : (1280/2)+xpos. y: (800/2)+ypos
 
             foreach (IntRect rect in rectList)
@@ -64,8 +68,9 @@ namespace GitGudP2
                     newPos.X = colBoxRight.X - (colBoxRight.X - (rect.Left + rect.Width));
                 }
                 else
-                    pos = newPos;
+                    translatedPos = newPos;
             }
+            //newPos.X = 
             return newPos;
         }
 
@@ -79,17 +84,20 @@ namespace GitGudP2
         /// <returns>gibt zurück ob eine Kollision statfindet</returns>
         public bool EntityWithRectangle(IntRect colRect, Vector2f pos, int offset)
         {
-            colBoxTop.X = pos.X + offset / 2;
-            colBoxTop.Y = pos.Y;
+            translatedPos.X = (1280 / 2) + pos.X;
+            translatedPos.Y = (800 / 2) + pos.Y;
 
-            colBoxRight.X = pos.X + offset;
-            colBoxRight.Y = pos.Y + offset / 2;
+            colBoxTop.X = translatedPos.X + offset / 2;
+            colBoxTop.Y = translatedPos.Y;
 
-            colBoxBottom.X = pos.X + offset / 2;
-            colBoxBottom.Y = pos.Y + offset;
+            colBoxRight.X = translatedPos.X + offset;
+            colBoxRight.Y = translatedPos.Y + offset / 2;
 
-            colBoxLeft.X = pos.X;
-            colBoxLeft.Y = pos.Y + offset / 2;
+            colBoxBottom.X = translatedPos.X + offset / 2;
+            colBoxBottom.Y = translatedPos.Y + offset;
+
+            colBoxLeft.X = translatedPos.X;
+            colBoxLeft.Y = translatedPos.Y + offset / 2;
 
             if (Collision.Collision.Check(colRect, colBoxTop) || Collision.Collision.Check(colRect, colBoxRight)
                 || Collision.Collision.Check(colRect, colBoxBottom) || Collision.Collision.Check(colRect, colBoxLeft))
@@ -107,17 +115,20 @@ namespace GitGudP2
         /// <returns></returns>
         public bool EntityWithRectList (List<IntRect> rectList, Vector2f pos, int offset)
         {
-            colBoxTop.X = pos.X + offset / 2;
-            colBoxTop.Y = pos.Y;
+            translatedPos.X = (1280 / 2) + pos.X;
+            translatedPos.Y = (800 / 2) + pos.Y;
 
-            colBoxRight.X = pos.X + offset;
-            colBoxRight.Y = pos.Y + offset / 2;
+            colBoxTop.X = translatedPos.X + offset / 2;
+            colBoxTop.Y = translatedPos.Y;
 
-            colBoxBottom.X = pos.X + offset / 2;
-            colBoxBottom.Y = pos.Y + offset;
+            colBoxRight.X = translatedPos.X + offset;
+            colBoxRight.Y = translatedPos.Y + offset / 2;
 
-            colBoxLeft.X = pos.X;
-            colBoxLeft.Y = pos.Y + offset / 2;
+            colBoxBottom.X = translatedPos.X + offset / 2;
+            colBoxBottom.Y = translatedPos.Y + offset;
+
+            colBoxLeft.X = translatedPos.X;
+            colBoxLeft.Y = translatedPos.Y + offset / 2;
 
             foreach (IntRect rect in rectList)
             {

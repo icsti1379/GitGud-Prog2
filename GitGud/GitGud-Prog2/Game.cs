@@ -14,7 +14,7 @@ namespace GitGudP2
     {
         public void Start()
         {
-            RenderWindow window = new RenderWindow(new SFML.Window.VideoMode(800, 600), "GitGudP2", Styles.Close, new ContextSettings(24, 8, 2));
+            RenderWindow window = new RenderWindow(new SFML.Window.VideoMode(1280, 800), "GitGudP2", Styles.Close, new ContextSettings(24, 8, 2));
             window.SetFramerateLimit(60);
             window.Closed += WindowClosed;
 

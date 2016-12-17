@@ -10,8 +10,6 @@ using SFML.Window;
 using SFML.Graphics;
 using SFML.Audio;
 
-using GitGudP2.States;
-
 namespace GitGudP2
 {
     public class StateMachine

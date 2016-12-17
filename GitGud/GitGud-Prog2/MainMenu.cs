@@ -13,6 +13,7 @@ namespace GitGudP2
 {
     public class MainMenu : State
     {
+        Text mainMenuMessage;
         public override void Dispose()
         {
             //throw new notimplementedexception();
@@ -20,6 +21,8 @@ namespace GitGudP2
 
         public override void Initialize()
         {
+            mainMenuMessage = new Text("Press Enter to start", new Font("Font/arial.ttf"));
+            mainMenuMessage.Position = new Vector2f(50, 50);
             //throw new notimplementedexception();
         }
 
@@ -35,6 +38,7 @@ namespace GitGudP2
         public override void Draw(RenderWindow renderWindow)
         {
             renderWindow.Clear(Color.Black);
+            renderWindow.Draw(mainMenuMessage);
             renderWindow.Display();
         }
     }

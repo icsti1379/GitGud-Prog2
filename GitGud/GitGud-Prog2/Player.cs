@@ -13,6 +13,9 @@ namespace GitGudP2
     class Player : AnimatedCharacter
     {
         Vector2f playerPos;
+        bool quest;
+
+        public bool Quest { get; set; }
         public Player() : base("Sprites/male_01.png", 64)
         {
             Anim_Up = new Animation(512, 0, 9);

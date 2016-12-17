@@ -10,7 +10,7 @@ using SFML.Window;
 using SFML.Graphics;
 using SFML.Audio;
 
-namespace GitGudP2.States
+namespace GitGudP2
 {
     public class CreditScreen : State
     {

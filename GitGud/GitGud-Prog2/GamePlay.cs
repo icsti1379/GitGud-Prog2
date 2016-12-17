@@ -10,30 +10,21 @@ using SFML.Window;
 using SFML.Graphics;
 using SFML.Audio;
 
-using GitGudP2;
-
-namespace GitGudP2.States
+namespace GitGudP2
 {
     public class GamePlay : State
     {
-        //World world;
-        //Player player;
-        //QuestNPC questNPC;
-        //EnemyNPC enemyNPC;
         Player player;
         View view;
         Map map;
         Chicken kip;
         Clock clock;
+        NPCinteraction interaction;
 
         public GamePlay()
         {
-            //world = new World();
-            //player = new Player();
-            //questNPC = new QuestNPC();
-            //enemyNPC = new EnemyNPC();
             map = new Map();
-            view = new View(new Vector2f(0, 0), new Vector2f(800, 600));
+            view = new View(new Vector2f(0, 0), new Vector2f(1200, 700));
 
             player = new Player();
 
@@ -47,6 +38,8 @@ namespace GitGudP2.States
 
 
             clock = new Clock();
+
+            interaction = new NPCinteraction(1);
         }
 
         public override void Dispose()
@@ -69,23 +62,20 @@ namespace GitGudP2.States
 
             view.Center = new Vector2f((player.Xpos + 32), (player.Ypos + 32));
 
-            //player.Update(world.CurrentRoom);
             return GameStates.GamePlayState;
             //throw new NotImplementedException();
         }
 
         public override void Draw(RenderWindow renderWindow)
         {
-            //world.Draw();
-            //player.Draw();
-            //questNPC.Draw();
-            //enemyNPC.Draw();
+
             //throw new NotImplementedException();
             renderWindow.SetView(view);
             renderWindow.Clear(new Color(43, 130, 53));
             map.Draw(renderWindow);
             kip.Draw(renderWindow);
             player.Draw(renderWindow);
+            interaction.Draw(renderWindow);
 
             renderWindow.Display();
         }
