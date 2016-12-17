@@ -21,6 +21,7 @@ namespace GitGudP2
         CollisionHandling CollisionHandling;
         Sprite projectileSprite;
         CircleShape projDisplay;
+        bool hasKilled;
 
         public Projectile (Vector2f originPos, float direction)
         {
@@ -67,9 +68,11 @@ namespace GitGudP2
              *      enemy.dispose();
              *      Player.setScore(+1);
              *      projectile.dispose();
+             *      hasKilled = true;
              * else
              *      newProjPos = projectilePos * projectileDirection;
              *      projectilePos = newProjPos;
+             *      hasKilled = false;
              */
         }
 
@@ -82,6 +85,11 @@ namespace GitGudP2
         public Vector2f ProjectilePos()
         {
             return projectilePos;
+        }
+
+        public bool HasKilled()
+        {
+            return hasKilled;
         }
     }
 }

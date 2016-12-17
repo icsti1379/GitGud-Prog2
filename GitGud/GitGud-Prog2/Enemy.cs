@@ -11,9 +11,9 @@ using System.IO;
 
 namespace GitGudP2
 {
-    class Enemy : AnimatedCharacter
+    class Enemy : AnimatedCharacterWithAI
     {
-        Vector2f enemyPos;
+        Vector2f enemyPos, playerPos, waypointPos;
         IntRect collisionRect;
         bool isAlive;
         Random rand;
@@ -48,7 +48,19 @@ namespace GitGudP2
         }
         public override void Update(float deltaTime)
         {
-            
+            if (enemyPos.X < playerPos.X)
+                waypointPos.X = (playerPos.X - enemyPos.X) / 100;
+            if (playerPos.X < enemyPos.X)
+                waypointPos.X = (enemyPos.X - playerPos.X) / 100;
+            if (enemyPos.Y < playerPos.Y)
+                waypointPos.Y = (playerPos.Y - enemyPos.Y) / 100;
+            if (playerPos.Y < enemyPos.Y)
+                waypointPos.Y = (enemyPos.Y - playerPos.Y) / 100;
+            else
+                waypointPos = enemyPos;
+
+            Waypoints.Add(new Waypoint(waypointPos.X, waypointPos.Y));
+
             base.Update(deltaTime);
         }
 
@@ -65,6 +77,11 @@ namespace GitGudP2
         public Vector2f EnemyPos()
         {
             return enemyPos;
+        }
+
+        public void PlayerPos(Vector2f pos)
+        {
+            playerPos = pos;
         }
     }
 }
