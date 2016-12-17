@@ -17,6 +17,18 @@ namespace GitGudP2
         int identifier;
         string textContent;
         Font font;
+        bool interactionPossible;
+
+        public bool getiPossible()
+        {
+            return interactionPossible;
+        }
+
+        public void setiPossible(bool iPossible)
+        {
+            interactionPossible = iPossible;
+        }
+
         public NPCinteraction(int identifier)
         {
             this.identifier = identifier;
@@ -28,7 +40,7 @@ namespace GitGudP2
                     textContent = "this is a quest Text";
                     break;
                 case 2:
-                    textContent = "this is an upgrade Test";
+                    textContent = "this is an upgrade Text";
                     break;
             }
 
@@ -43,38 +55,29 @@ namespace GitGudP2
         }
         public void Update()
         {
-            //if (identifier == "Quest")
-            //{
-                
-            //}
-
-            //if (identifier == "Upgrade")
-            //{
-                
-            //}
-
-            //else
-            //    throw NotImplementedException;
+            switch (identifier)
+            {
+                case 1:
+                    //input -> quest annehmen/ablehnen
+                    //y = annehmen
+                    //n = ablehnen
+                    break;
+                case 2:
+                    //input -> upgrades
+                    //1 = upgrade1
+                    //2 = upgrade2
+                    //3 = upgrade3
+                    break;
+            }
         }
 
         public void Draw(RenderWindow renderWindow)
         {
-            renderWindow.Draw(rectangle);
-            renderWindow.Draw(text1);
-            //if (identifier == "Quest")
-            //{
-            //    renderWindow.Draw(rectangle);
-            //    renderWindow.Draw(text1);
-            //}
-
-            //if (identifier == "Upgrade")
-            //{
-            //    renderWindow.Draw(rectangle);
-            //    renderWindow.Draw(text1);
-            //}
-
-            //else
-            //    renderWindow.Draw(rectangle);
+            while (interactionPossible)
+            {
+                renderWindow.Draw(rectangle);
+                renderWindow.Draw(text1);
+            }
         }
     }
 }

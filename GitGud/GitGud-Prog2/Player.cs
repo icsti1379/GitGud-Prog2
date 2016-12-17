@@ -15,6 +15,16 @@ namespace GitGudP2
         Vector2f playerPos;
         bool quest;
 
+        public Vector2f getPlayerPos()
+        {
+            return playerPos;
+        }
+
+        public void setPlayerPos(Vector2f pos)
+        {
+            playerPos = pos;
+        }
+
         public bool Quest { get; set; }
         public Player() : base("Sprites/male_01.png", 64)
         {

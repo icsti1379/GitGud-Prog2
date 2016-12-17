@@ -106,6 +106,7 @@
     <Compile Include="State.cs" />
     <Compile Include="StateMachine.cs" />
     <Compile Include="CollisionHandling.cs" />
+    <Compile Include="UpgradeNPC.cs" />
     <Compile Include="Waypoint.cs" />
   </ItemGroup>
   <ItemGroup>

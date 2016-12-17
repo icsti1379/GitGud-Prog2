@@ -15,6 +15,9 @@ namespace GitGudP2
     {
         public IntRect CollisionRect { get; set; }
         IntRect collisionRect;
+        bool alive;
+
+        public bool Alive { get; set; }
 
     }
 }

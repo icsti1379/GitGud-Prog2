@@ -10,20 +10,19 @@ using SFML.Window;
 
 namespace GitGudP2
 {
-    class QuestNPC : AnimatedCharacter
+    class UpgradeNPC : AnimatedCharacter
     {
         IntRect interactionRect;
         Vector2f position;
         NPCinteraction npcInteraction;
-        public QuestNPC() : base("sprites/questNPC", 64)
+        public UpgradeNPC() : base("Sprites/UpgradeNPC", 64)
         {
             interactionRect = new IntRect((int)position.X - 5, (int)position.Y - 5, 74, 74);
-            npcInteraction = new NPCinteraction(1);
+            npcInteraction = new NPCinteraction(2);
         }
 
         public override void Update(float deltaTime)
         {
-
             //if (Collision.Collision.Check(interactionRect, playerPos))
             //    npcInteraction.setiPossible(true);
             //else

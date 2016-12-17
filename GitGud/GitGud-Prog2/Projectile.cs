@@ -19,11 +19,13 @@ namespace GitGudP2
         int travelSpeedX;
         int travelSpeedY;
         CollisionHandling CollisionHandling;
+        Sprite projectileSprite;
 
         public Projectile (Vector2f originPos, float direction)
         {
             this.projectilePos = originPos;
             this.projectileDirection = direction;
+            projectileSprite = new Sprite();
 
             //TODO: mit originPos und direction die richtung des projektils herraus bekommen
 
@@ -59,8 +61,9 @@ namespace GitGudP2
              */
         }
 
-        public void Draw()
+        public void Draw(RenderWindow renderWindow)
         {
+            renderWindow.Draw(projectileSprite);
             //TODO: projectile anhand der neuen Position zeichnen
         }
 

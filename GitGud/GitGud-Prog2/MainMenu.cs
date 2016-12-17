@@ -21,8 +21,8 @@ namespace GitGudP2
 
         public override void Initialize()
         {
-            mainMenuMessage = new Text("Press Enter to start", new Font("Font/arial.ttf"));
-            mainMenuMessage.Position = new Vector2f(50, 50);
+            //mainMenuMessage = new Text("Press Enter to start", new Font("Font/arial.ttf"));
+            //mainMenuMessage.Position = new Vector2f(50, 50);
             //throw new notimplementedexception();
         }
 
@@ -37,6 +37,8 @@ namespace GitGudP2
 
         public override void Draw(RenderWindow renderWindow)
         {
+            mainMenuMessage = new Text("Press Enter to start", new Font("Font/arial.ttf"));
+            mainMenuMessage.Position = new Vector2f(50, 50);
             renderWindow.Clear(Color.Black);
             renderWindow.Draw(mainMenuMessage);
             renderWindow.Display();
