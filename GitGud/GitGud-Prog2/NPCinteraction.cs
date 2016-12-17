@@ -52,6 +52,9 @@ namespace GitGudP2
             rectangle.FillColor = Color.Black;
             rectangle.OutlineColor = Color.Red;
             rectangle.OutlineThickness = 2;
+
+            interactionPossible = true;
+            //TODO: oberes rausnehmen wenn collision fertig integriert ist
         }
         public void Update()
         {

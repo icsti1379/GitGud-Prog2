@@ -20,12 +20,15 @@ namespace GitGudP2
         int travelSpeedY;
         CollisionHandling CollisionHandling;
         Sprite projectileSprite;
+        CircleShape projDisplay;
 
         public Projectile (Vector2f originPos, float direction)
         {
             this.projectilePos = originPos;
             this.projectileDirection = direction;
             projectileSprite = new Sprite();
+            projDisplay = new CircleShape(2);
+            projDisplay.FillColor = Color.Black;
 
             //TODO: mit originPos und direction die richtung des projektils herraus bekommen
 
@@ -54,16 +57,25 @@ namespace GitGudP2
         {
             newProjPos = projectilePos * projectileDirection;
             projectilePos = newProjPos;
+            projDisplay.Position = projectilePos;
 
             /*if (CollisionHandling.ProjectileCollision())
              * TODO herrausfinden wie ich collision mit allen gegner überprüfe
              * nach collision gegner + projectile entfernen, counter erhöhen 
+             * foreach (Enemy enemy in playerList)
+             * if (collision.collision.check(enemy.rect, projectilepos))
+             *      enemy.dispose();
+             *      Player.setScore(+1);
+             *      projectile.dispose();
+             * else
+             *      newProjPos = projectilePos * projectileDirection;
+             *      projectilePos = newProjPos;
              */
         }
 
         public void Draw(RenderWindow renderWindow)
         {
-            renderWindow.Draw(projectileSprite);
+            renderWindow.Draw(projDisplay);
             //TODO: projectile anhand der neuen Position zeichnen
         }
 

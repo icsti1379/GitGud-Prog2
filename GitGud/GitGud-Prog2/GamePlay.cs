@@ -20,6 +20,7 @@ namespace GitGudP2
         Chicken kip;
         Clock clock;
         NPCinteraction interaction;
+        int enemyCounter;
 
         public GamePlay()
         {

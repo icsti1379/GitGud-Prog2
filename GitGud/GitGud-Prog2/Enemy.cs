@@ -11,13 +11,60 @@ using System.IO;
 
 namespace GitGudP2
 {
-    class Enemy
+    class Enemy : AnimatedCharacter
     {
-        public IntRect CollisionRect { get; set; }
+        Vector2f enemyPos;
         IntRect collisionRect;
-        bool alive;
+        bool isAlive;
+        Random rand;
+        int seed;
 
-        public bool Alive { get; set; }
+        public Enemy(int enemyCounter) : base("Sprites/Enemy", 64)
+        {
+            rand = new Random();
+            seed = enemyCounter % 4;
 
+            switch (seed)
+            {
+                case 1:
+                    enemyPos.X = 40 + rand.Next() % 1200;
+                    enemyPos.Y = 20 + rand.Next() % 20;
+                    break;
+                case 2:
+                    enemyPos.X = 40 + rand.Next() % 40;
+                    enemyPos.Y = 20 + rand.Next() % 760;
+                    break;
+                case 3:
+                    enemyPos.X = 40 + rand.Next() % 1200;
+                    enemyPos.Y = 780 - rand.Next() % 20;
+                    break;
+                case 4:
+                    enemyPos.X = 1240 - rand.Next() % 40;
+                    enemyPos.Y = 20 + rand.Next() % 760;
+                    break;
+            }
+
+            collisionRect = new IntRect((int)enemyPos.X, (int)enemyPos.Y, 64, 64);
+        }
+        public override void Update(float deltaTime)
+        {
+            
+            base.Update(deltaTime);
+        }
+
+        public void IsAlive(bool alive)
+        {
+            isAlive = alive;
+        }
+
+        public IntRect CollisionRect()
+        {
+            return collisionRect;
+        }
+
+        public Vector2f EnemyPos()
+        {
+            return enemyPos;
+        }
     }
 }
