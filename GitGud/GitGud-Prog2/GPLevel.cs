@@ -12,6 +12,9 @@ using SFML.Audio;
 
 namespace GitGudP2
 {
+    /// <summary>
+    /// Klasse für die eigentlichen Level
+    /// </summary>
     class GPLevel : State
     {
         Player player;
@@ -27,7 +30,12 @@ namespace GitGudP2
         int enemyCounter;
         bool pHasFired;
 
-
+        /// <summary>
+        /// Konstruktor, Übergabewerte sind dazu da die attribute des Spielers bei zu behalten
+        /// </summary>
+        /// <param name="playerLife"></param>
+        /// <param name="playerRunSpeed"></param>
+        /// <param name="playerDoubleScore"></param>
         public GPLevel(int playerLife, int playerRunSpeed, bool playerDoubleScore)
         {
             player = new Player();
@@ -42,6 +50,7 @@ namespace GitGudP2
         {
             float deltaTime = clock.Restart().AsSeconds();
 
+            //update aller entitäten auf der map
             player.Update(deltaTime);
 
             foreach (Enemy enemy in enemyList)
@@ -51,11 +60,14 @@ namespace GitGudP2
 
             view.Center = new Vector2f((player.Xpos + 32), (player.Ypos + 32));
 
+            //getten der playerpos und weitergabe an alle Gegner für die Waypoints
             playerPos = player.getPlayerPos();
 
             foreach (Enemy enemy in enemyList)
                 enemy.PlayerPos(playerPos);
 
+            ///schauen ob der spieler gefeuert hat und danach erzeugen des projektils bzw.
+            ///der gegner wenn weniger als enemycounter aktiv sind
             pHasFired = player.HasFired();
 
             if (enemyCounter < 10)
@@ -64,6 +76,7 @@ namespace GitGudP2
             if (pHasFired)
                 projList.Add(new Projectile(playerPos, 1));
 
+            //überprüft ob ein projektil einen gegner getroffen hat und handelt
             foreach (Enemy enemy in enemyList)
             {
                 foreach (Projectile proj in projList)
@@ -79,6 +92,7 @@ namespace GitGudP2
                 }
             }
 
+            //setzen des aktuellen Punktestandes
             textContent = Convert.ToString(player.GetPlayerScore());
             textcontent2 = "Score: ";
             text = new Text(textContent + textcontent2, font);

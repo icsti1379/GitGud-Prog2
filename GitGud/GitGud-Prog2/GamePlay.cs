@@ -12,6 +12,9 @@ using SFML.Audio;
 
 namespace GitGudP2
 {
+    /// <summary>
+    /// Klasse für die Hub Map
+    /// </summary>
     public class GamePlay : State
     {
         Player player;
@@ -29,6 +32,10 @@ namespace GitGudP2
         Vector2f playerPos, projectilePos;
         private bool pHasFired, questAccepted;
 
+        /// <summary>
+        /// nachfolgend 3 getter um die attribute vom spieler zwischen den verschiedenen gameplay states bei zu behalten
+        /// </summary>
+        /// <returns></returns>
         public int GetPLayerLife()
         {
             return player.GetLife();
@@ -80,6 +87,7 @@ namespace GitGudP2
         {
             float deltaTime = clock.Restart().AsSeconds();
 
+            //nachfolgend werden alle entitäten auf der map geupdated
             kip.Update(deltaTime);
             player.Update(deltaTime);
             foreach (Enemy enemy in enemyList)
@@ -89,16 +97,19 @@ namespace GitGudP2
 
             view.Center = new Vector2f((player.Xpos + 32), (player.Ypos + 32));
 
+            //holen der verschiedenen variablen für die Kollision
             playerPos = player.getPlayerPos();
             enemy.PlayerPos(playerPos);
             pHasFired = player.HasFired();
 
+            //generieren neuer gegner, oder projektile
             if (enemyCounter < 10)
                 enemyList.Add(new Enemy(enemyCounter));
 
             if (pHasFired)
                 projList.Add(new Projectile(playerPos, 1));
 
+            //überprüft ob ein Projektil einen Gegner getroffen hat und was danach passiert
             foreach (Enemy enemy in enemyList)
             {
                 foreach (Projectile proj in projList)
@@ -114,6 +125,7 @@ namespace GitGudP2
                 }
             }
 
+            //falls upgrades gekauft wurden, anwenden dieser auf den Spieler
             if (iUpgradeNPC.LifeUpgrade())
                 player.SetLife(true);
             if (iUpgradeNPC.RunSpeedUpgrade())
@@ -121,6 +133,7 @@ namespace GitGudP2
             if (iUpgradeNPC.DoubleScoreUpdate())
                 player.SetDoubleScore(true);
 
+            //State wechsel, falls quest gestartet wurde
             if (iQuestNPC.QuestAccepted())
                 return GameStates.GPLevelState;
             else
@@ -128,6 +141,10 @@ namespace GitGudP2
             //throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// zeichnet alle sachen die gezeichnet werden müssen
+        /// </summary>
+        /// <param name="renderWindow"></param>
         public override void Draw(RenderWindow renderWindow)
         {
 

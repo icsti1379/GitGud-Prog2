@@ -10,6 +10,9 @@ using SFML.Window;
 
 namespace GitGudP2
 {
+    /// <summary>
+    /// Player Grundklasse
+    /// </summary>
     class Player : AnimatedCharacter
     {
         Vector2f playerPos;
@@ -17,6 +20,11 @@ namespace GitGudP2
         int score, life, runSpeed;
         bool doubleScore;
 
+        /// <summary>
+        /// nachfolgend mehrere setter und getter für verschiedene Attribute des Spielers
+        /// benötigt für Upgrades, Collision und andere sachen
+        /// </summary>
+        /// <returns></returns>
         public int GetLife()
         {
             return life;
@@ -90,9 +98,12 @@ namespace GitGudP2
         public override void Update(float deltaTime)
         {
             hasFired = false;
+
+            //falls life zu hoch ist auf max wert setzen
             if (life > 5)
                 life = 5;
 
+            //regelt was bei doublescore passiert
             if (!doubleScore)
                 score++;
             if (doubleScore)

@@ -10,8 +10,12 @@ using SFML.Window;
 
 namespace GitGudP2
 {
+    /// <summary>
+    /// Basisklasse für NPC Interaktion
+    /// </summary>
     class NPCinteraction
     {
+
         RectangleShape rectangle;
         protected Text text1, text2, text3, text4;
         protected string textContent;
@@ -19,16 +23,29 @@ namespace GitGudP2
         protected bool interactionPossible;
         protected Vector2f text1Pos, text2Pos, text3Pos, text4Pos;
 
+        /// <summary>
+        /// getter der zurück gibt ob eine Interaktion möglich ist,
+        /// also sich der spieler in der collision box befindet
+        /// </summary>
+        /// <returns></returns>
         public bool getiPossible()
         {
             return interactionPossible;
         }
 
+        /// <summary>
+        /// setter für die Interaktion
+        /// </summary>
+        /// <param name="iPossible"></param>
         public void setiPossible(bool iPossible)
         {
             interactionPossible = iPossible;
         }
 
+        /// <summary>
+        /// Konstruktor für die Basis Interaktionsklasse
+        /// erstellt ein rechteck zum zeichnen, sowie die position für die texte
+        /// </summary>
         public NPCinteraction()
         {
             font = new Font("Font/arial.ttf");
@@ -77,6 +94,10 @@ namespace GitGudP2
             //}
         }
 
+        /// <summary>
+        /// zeichnen des rechtecks sowie der texte
+        /// </summary>
+        /// <param name="renderWindow"></param>
         public virtual void Draw(RenderWindow renderWindow)
         {
             while (interactionPossible)

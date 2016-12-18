@@ -10,25 +10,43 @@ using SFML.Window;
 
 namespace GitGudP2
 {
+    /// <summary>
+    /// Klasse für die Interaktion mit dem Upgrade NPC
+    /// </summary>
     class UpgradeNPCInteraction : NPCinteraction
     {
         bool lifeUpgrade, runSpeedUpgrade, doubleScoreUpgrade;
 
+        /// <summary>
+        /// getter für das lifeupgrade
+        /// </summary>
+        /// <returns></returns>
         public bool LifeUpgrade()
         {
             return lifeUpgrade;
         }
 
+        /// <summary>
+        /// getter für das runspeed Upgrade
+        /// </summary>
+        /// <returns></returns>
         public bool RunSpeedUpgrade()
         {
             return runSpeedUpgrade;
         }
 
+        /// <summary>
+        /// getter für das score upgrade
+        /// </summary>
+        /// <returns></returns>
         public bool DoubleScoreUpdate()
         {
             return doubleScoreUpgrade;
         }
 
+        /// <summary>
+        /// Konstruktor, erstellt die texte und setzt die upgrade bools standartmäßig auf false
+        /// </summary>
         public UpgradeNPCInteraction() : base()
         {
             textContent = "Upgrade1: 5C";
@@ -49,6 +67,9 @@ namespace GitGudP2
             doubleScoreUpgrade = false;
         }
 
+        /// <summary>
+        /// überprüft, ob der Spieler ein Upgrade gekauft hat
+        /// </summary>
         public override void Update()
         {
             //if (InputManager.1)

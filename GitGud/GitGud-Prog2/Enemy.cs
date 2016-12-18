@@ -11,6 +11,9 @@ using System.IO;
 
 namespace GitGudP2
 {
+    /// <summary>
+    /// Basis Enemy Klasse
+    /// </summary>
     class Enemy : AnimatedCharacterWithAI
     {
         Vector2f enemyPos, playerPos, waypointPos;
@@ -21,6 +24,11 @@ namespace GitGudP2
         Waypoint waypoint;
         List<Waypoint> waypoints;
 
+        /// <summary>
+        /// Konstruktor, erstellt einen gegner mit random spawn am rand der map
+        /// und erzeugt ein rechteck um das sprite für die Kollisionsabfrage
+        /// </summary>
+        /// <param name="enemyCounter">anzahl der momentanen gegner auf der map, wird als seed für die spawn location genommen</param>
         public Enemy(int enemyCounter) : base("Sprites/Enemy", 64)
         {
             waypoints = new List<Waypoint>();
@@ -49,6 +57,12 @@ namespace GitGudP2
 
             collisionRect = new IntRect((int)enemyPos.X, (int)enemyPos.Y, 64, 64);
         }
+
+        /// <summary>
+        /// gibt jedes Update die aktuelle Position des spielers als waypoint
+        /// ziel ist, dass er sich jedes update die position des spieler als neuen waypoint gibt
+        /// </summary>
+        /// <param name="deltaTime"></param>
         public override void Update(float deltaTime)
         {
             //if (enemyPos.X < playerPos.X)
@@ -67,21 +81,38 @@ namespace GitGudP2
             base.Update(deltaTime);
         }
 
+        /// <summary>
+        /// setter, um nach erfolgreicher Kollision mit Projektilen den gegner auf nicht lebend zu setzen
+        /// </summary>
+        /// <param name="alive"></param>
         public void IsAlive(bool alive)
         {
             isAlive = alive;
         }
 
+        /// <summary>
+        /// getter, um für die Kollisions abfrage das Kollisions rechteck des gegners zu bekommen
+        /// </summary>
+        /// <returns></returns>
         public IntRect CollisionRect()
         {
             return collisionRect;
         }
 
+        /// <summary>
+        /// getter um die gegnerposition zu bekommen
+        /// </summary>
+        /// <returns></returns>
         public Vector2f EnemyPos()
         {
             return enemyPos;
         }
 
+        /// <summary>
+        /// setter um die aktuelle positions des spielers zu bekommen
+        /// für waypoints benötigt
+        /// </summary>
+        /// <param name="pos"></param>
         public void PlayerPos(Vector2f pos)
         {
             playerPos = pos;

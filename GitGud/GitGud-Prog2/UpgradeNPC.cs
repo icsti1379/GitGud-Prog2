@@ -10,6 +10,9 @@ using SFML.Window;
 
 namespace GitGudP2
 {
+    /// <summary>
+    /// Basisklasse des Upgrade NPCs
+    /// </summary>
     class UpgradeNPC : AnimatedCharacter
     {
         IntRect interactionRect;

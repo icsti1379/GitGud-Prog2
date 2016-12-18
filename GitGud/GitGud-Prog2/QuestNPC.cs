@@ -10,6 +10,9 @@ using SFML.Window;
 
 namespace GitGudP2
 {
+    /// <summary>
+    /// Quest NPC basisklasse
+    /// </summary>
     class QuestNPC : AnimatedCharacter
     {
         IntRect interactionRect;

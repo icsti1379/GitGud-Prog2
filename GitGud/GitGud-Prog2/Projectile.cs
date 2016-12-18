@@ -11,6 +11,9 @@ using System.IO;
 
 namespace GitGudP2
 {
+    /// <summary>
+    /// Basisklasse für Projektile
+    /// </summary>
     class Projectile
     {
         Vector2f projectilePos;
@@ -25,10 +28,14 @@ namespace GitGudP2
 
         public Projectile (Vector2f originPos, float direction)
         {
+            //Umrechnen von der tilemap position des Spielers auf das normale Koordinatensystem
+            //dient als startposition des geschosses
             projectilePos.X = (1280 / 2) + originPos.X;
             projectilePos.Y = (800 / 2) + originPos.Y;
 
             this.projectileDirection = direction;
+
+            //generiert den kreis zum späteren zeichen
             projDisplay = new CircleShape(2);
             projDisplay.FillColor = Color.Black;
 
@@ -83,6 +90,7 @@ namespace GitGudP2
             //TODO: projectile anhand der neuen Position zeichnen
         }
 
+        //getter und setter zur Kollisionsberechnung und dessen Folge
         public Vector2f ProjectilePos()
         {
             return projectilePos;
