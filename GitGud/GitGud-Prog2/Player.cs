@@ -26,15 +26,20 @@ namespace GitGudP2
         {
             this.life = life;
         }
+        public void SetLife(bool lifeIncreased)
+        {
+            if (lifeIncreased)
+                life++;
+        }
 
         public int GetRunSpeed()
         {
             return runSpeed;
         }
 
-        public void SetRunSpeed(int runSpeed)
+        public void SetRunSpeed(int multiplier)
         {
-            this.runSpeed = runSpeed;
+            runSpeed = runSpeed * multiplier;
         }
 
         public bool GetDoubleScore()
@@ -85,6 +90,13 @@ namespace GitGudP2
         public override void Update(float deltaTime)
         {
             hasFired = false;
+            if (life > 5)
+                life = 5;
+
+            if (!doubleScore)
+                score++;
+            if (doubleScore)
+                score += 2;
             //if mouseclock -> hasFired = true;
             this.CurrentState = CharacterState.None;
 

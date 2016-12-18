@@ -20,13 +20,18 @@ namespace GitGudP2
         Vector2f playerPos, projectilePos;
         View view;
         Clock clock;
+        Text text;
+        Font font;
+        string textContent, textcontent2;
+
         int enemyCounter;
-        bool hasFired;
+        bool pHasFired;
 
 
         public GPLevel(int playerLife, int playerRunSpeed, bool playerDoubleScore)
         {
             player = new Player();
+            font = new Font("Font/arial.ttf");
             player.SetLife(playerLife);
             player.SetRunSpeed(playerRunSpeed);
             player.SetDoubleScore(playerDoubleScore);
@@ -35,13 +40,68 @@ namespace GitGudP2
 
         public override GameStates Update()
         {
+            float deltaTime = clock.Restart().AsSeconds();
+
+            player.Update(deltaTime);
+
+            foreach (Enemy enemy in enemyList)
+                enemy.Update(deltaTime);
+            foreach (Projectile proj in projList)
+                proj.Update(deltaTime);
+
+            view.Center = new Vector2f((player.Xpos + 32), (player.Ypos + 32));
+
+            playerPos = player.getPlayerPos();
+
+            foreach (Enemy enemy in enemyList)
+                enemy.PlayerPos(playerPos);
+
+            pHasFired = player.HasFired();
+
+            if (enemyCounter < 10)
+                enemyList.Add(new Enemy(enemyCounter));
+
+            if (pHasFired)
+                projList.Add(new Projectile(playerPos, 1));
+
+            foreach (Enemy enemy in enemyList)
+            {
+                foreach (Projectile proj in projList)
+                {
+                    if (Collision.Collision.Check(enemy.CollisionRect(), proj.ProjectilePos()))
+                    {
+                        enemy.IsAlive(false);
+                        proj.HasKilled(true);
+                        player.IncreasePlayerScore(true);
+                        enemyList.Remove(enemy);
+                        projList.Remove(proj);
+                    }
+                }
+            }
+
+            textContent = Convert.ToString(player.GetPlayerScore());
+            textcontent2 = "Score: ";
+            text = new Text(textContent + textcontent2, font);
+
             return GameStates.GPLevelState;
-            throw new NotImplementedException();
+
+            //throw new NotImplementedException();
         }
 
         public override void Draw(RenderWindow renderWindow)
         {
-            throw new NotImplementedException();
+            renderWindow.SetView(view);
+            renderWindow.Clear(new Color(43, 130, 53));
+            //map.Draw(renderWindow);
+            player.Draw(renderWindow);
+            foreach (Enemy enemy in enemyList)
+                enemy.Draw(renderWindow);
+            foreach (Projectile proj in projList)
+                proj.Draw(renderWindow);
+
+            renderWindow.Display();
+
+            //throw new NotImplementedException();
         }
 
         public override void Dispose()

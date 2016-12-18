@@ -23,7 +23,8 @@ namespace GitGudP2
         Map map;
         Chicken kip;
         Clock clock;
-        NPCinteraction interaction;
+        QuestNPCInteraction iQuestNPC;
+        UpgradeNPCInteraction iUpgradeNPC;
         int enemyCounter;
         Vector2f playerPos, projectilePos;
         private bool pHasFired, questAccepted;
@@ -60,7 +61,8 @@ namespace GitGudP2
 
             clock = new Clock();
 
-            interaction = new NPCinteraction(1);
+            iUpgradeNPC = new UpgradeNPCInteraction();
+            iQuestNPC = new QuestNPCInteraction();
         }
 
         public override void Dispose()
@@ -112,9 +114,14 @@ namespace GitGudP2
                 }
             }
 
-            questAccepted = interaction.QuestAccepted();
+            if (iUpgradeNPC.Upgrade1())
+                player.SetLife(true);
+            if (iUpgradeNPC.Upgrade2())
+                player.SetRunSpeed(2);
+            if (iUpgradeNPC.Upgrade3())
+                player.SetDoubleScore(true);
 
-            if (questAccepted)
+            if (iQuestNPC.QuestAccepted())
                 return GameStates.GPLevelState;
             else
                 return GameStates.GamePlayState;
@@ -130,7 +137,8 @@ namespace GitGudP2
             map.Draw(renderWindow);
             kip.Draw(renderWindow);
             player.Draw(renderWindow);
-            interaction.Draw(renderWindow);
+            iQuestNPC.Draw(renderWindow);
+            iUpgradeNPC.Draw(renderWindow);
             foreach (Enemy enemy in enemyList)
                 enemy.Draw(renderWindow);
             foreach (Projectile proj in projList)
