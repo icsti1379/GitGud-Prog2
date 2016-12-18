@@ -13,8 +13,18 @@ namespace GitGudP2
     class Player : AnimatedCharacter
     {
         Vector2f playerPos;
-        bool quest;
+        bool quest, hasFired;
+        int score;
 
+        public int GetPlayerScore()
+        {
+            return score;
+        }
+
+        public void IncreasePlayerScore(bool scoreIncrease)
+        {
+            score++;
+        }
         public Vector2f getPlayerPos()
         {
             return playerPos;
@@ -23,6 +33,11 @@ namespace GitGudP2
         public void setPlayerPos(Vector2f pos)
         {
             playerPos = pos;
+        }
+
+        public bool HasFired()
+        {
+            return hasFired;
         }
 
         public bool Quest { get; set; }
@@ -38,7 +53,8 @@ namespace GitGudP2
         }
         public override void Update(float deltaTime)
         {
-
+            hasFired = false;
+            //if mouseclock -> hasFired = true;
             this.CurrentState = CharacterState.None;
 
             if (Keyboard.IsKeyPressed(Keyboard.Key.D))

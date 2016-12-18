@@ -25,9 +25,10 @@ namespace GitGudP2
 
         public Projectile (Vector2f originPos, float direction)
         {
-            this.projectilePos = originPos;
+            projectilePos.X = (1280 / 2) + originPos.X;
+            projectilePos.Y = (800 / 2) + originPos.Y;
+
             this.projectileDirection = direction;
-            projectileSprite = new Sprite();
             projDisplay = new CircleShape(2);
             projDisplay.FillColor = Color.Black;
 
@@ -90,6 +91,11 @@ namespace GitGudP2
         public bool HasKilled()
         {
             return hasKilled;
+        }
+
+        public void HasKilled(bool killed)
+        {
+            hasKilled = killed;
         }
     }
 }

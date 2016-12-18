@@ -18,9 +18,12 @@ namespace GitGudP2
         bool isAlive;
         Random rand;
         int seed;
+        Waypoint waypoint;
+        List<Waypoint> waypoints;
 
         public Enemy(int enemyCounter) : base("Sprites/Enemy", 64)
         {
+            waypoints = new List<Waypoint>();
             rand = new Random();
             seed = enemyCounter % 4;
 
@@ -48,18 +51,18 @@ namespace GitGudP2
         }
         public override void Update(float deltaTime)
         {
-            if (enemyPos.X < playerPos.X)
-                waypointPos.X = (playerPos.X - enemyPos.X) / 100;
-            if (playerPos.X < enemyPos.X)
-                waypointPos.X = (enemyPos.X - playerPos.X) / 100;
-            if (enemyPos.Y < playerPos.Y)
-                waypointPos.Y = (playerPos.Y - enemyPos.Y) / 100;
-            if (playerPos.Y < enemyPos.Y)
-                waypointPos.Y = (enemyPos.Y - playerPos.Y) / 100;
-            else
-                waypointPos = enemyPos;
-
-            Waypoints.Add(new Waypoint(waypointPos.X, waypointPos.Y));
+            //if (enemyPos.X < playerPos.X)
+            //    waypointPos.X = (playerPos.X - enemyPos.X) / 100;
+            //if (playerPos.X < enemyPos.X)
+            //    waypointPos.X = (enemyPos.X - playerPos.X) / 100;
+            //if (enemyPos.Y < playerPos.Y)
+            //    waypointPos.Y = (playerPos.Y - enemyPos.Y) / 100;
+            //if (playerPos.Y < enemyPos.Y)
+            //    waypointPos.Y = (enemyPos.Y - playerPos.Y) / 100;
+            //else
+            //    waypointPos = enemyPos;
+            waypoints.Clear();
+            waypoints.Add(new Waypoint(waypointPos.X, waypointPos.Y));
 
             base.Update(deltaTime);
         }

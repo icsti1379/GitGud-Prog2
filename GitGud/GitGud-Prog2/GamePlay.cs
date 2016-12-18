@@ -15,12 +15,18 @@ namespace GitGudP2
     public class GamePlay : State
     {
         Player player;
+        Enemy enemy;
+        List<Enemy> enemyList;
+        Projectile projectile;
+        List<Projectile> projList;
         View view;
         Map map;
         Chicken kip;
         Clock clock;
         NPCinteraction interaction;
         int enemyCounter;
+        Vector2f playerPos, projectilePos;
+        private bool pHasFired;
 
         public GamePlay()
         {
@@ -60,8 +66,35 @@ namespace GitGudP2
 
             kip.Update(deltaTime);
             player.Update(deltaTime);
+            foreach (Enemy enemy in enemyList)
+                enemy.Update(deltaTime);
+            foreach (Projectile proj in projList)
+                proj.Update(deltaTime);
 
             view.Center = new Vector2f((player.Xpos + 32), (player.Ypos + 32));
+
+            playerPos = player.getPlayerPos();
+            enemy.PlayerPos(playerPos);
+            pHasFired = player.HasFired();
+
+            if (enemyCounter < 10)
+                enemyList.Add(new Enemy(enemyCounter));
+
+            if (pHasFired)
+                projList.Add(new Projectile(playerPos, 1));
+
+            foreach (Enemy enemy in enemyList)
+            {
+                for (int i = 0; i < projList.Count; i++)
+                {
+                    if (Collision.Collision.Check(enemy.CollisionRect(), projectile.ProjectilePos()))
+                    {
+                        enemy.IsAlive(false);
+                        projectile.HasKilled(true);
+                        player.IncreasePlayerScore(true);
+                    }
+                }
+            }
 
             return GameStates.GamePlayState;
             //throw new NotImplementedException();
