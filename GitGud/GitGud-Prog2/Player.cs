@@ -15,6 +15,7 @@ namespace GitGudP2
     /// </summary>
     class Player : AnimatedCharacter
     {
+        //TODO: überall wo playerposition verwendet wird, muss diese erst von tilemap pos auf normal pos umgerechnet werden
         Vector2f playerPos;
         bool quest, hasFired;
         int score, life, runSpeed;
