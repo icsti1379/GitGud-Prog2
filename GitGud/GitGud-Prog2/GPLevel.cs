@@ -47,7 +47,7 @@ namespace GitGudP2
             player.SetMoveSpeed(playerRunSpeed);
             player.SetDoubleScore(playerDoubleScore);
             view = new View(new Vector2f(0, 0), new Vector2f(1200, 700));
-            gameMusic = new Music("Music/GameSong1.mp3");
+            gameMusic = new Music("Music/GameSong1.wav");
             gameMusic.Play();
             shootSoundBuffer = new SoundBuffer("Sounds/shoot.wav");
             shootSound = new Sound(shootSoundBuffer);

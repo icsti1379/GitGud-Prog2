@@ -74,7 +74,7 @@ namespace GitGudP2
             iUpgradeNPC = new UpgradeNPCInteraction();
             iQuestNPC = new QuestNPCInteraction();
 
-            hubMusic = new Music("Music/HubSong.mp3");
+            hubMusic = new Music("Music/HubSong.wav");
             upgradSoundBuffer = new SoundBuffer("Sounds/upgrade.wav");
             upgradeSound = new Sound(upgradSoundBuffer);
         }
