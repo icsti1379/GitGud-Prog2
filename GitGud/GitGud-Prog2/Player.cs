@@ -14,7 +14,38 @@ namespace GitGudP2
     {
         Vector2f playerPos;
         bool quest, hasFired;
-        int score;
+        int score, life, runSpeed;
+        bool doubleScore;
+
+        public int GetLife()
+        {
+            return life;
+        }
+
+        public void SetLife(int life)
+        {
+            this.life = life;
+        }
+
+        public int GetRunSpeed()
+        {
+            return runSpeed;
+        }
+
+        public void SetRunSpeed(int runSpeed)
+        {
+            this.runSpeed = runSpeed;
+        }
+
+        public bool GetDoubleScore()
+        {
+            return doubleScore;
+        }
+
+        public void SetDoubleScore(bool doubleScore)
+        {
+            this.doubleScore = doubleScore;
+        }
 
         public int GetPlayerScore()
         {

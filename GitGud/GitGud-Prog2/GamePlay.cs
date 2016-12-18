@@ -26,8 +26,22 @@ namespace GitGudP2
         NPCinteraction interaction;
         int enemyCounter;
         Vector2f playerPos, projectilePos;
-        private bool pHasFired;
+        private bool pHasFired, questAccepted;
 
+        public int GetPLayerLife()
+        {
+            return player.GetLife();
+        }
+
+        public int GetPlayerRunSpeed()
+        {
+            return player.GetRunSpeed();
+        }
+
+        public bool GetPlayerDoubleScore()
+        {
+            return player.GetDoubleScore();
+        }
         public GamePlay()
         {
             map = new Map();
@@ -85,18 +99,25 @@ namespace GitGudP2
 
             foreach (Enemy enemy in enemyList)
             {
-                for (int i = 0; i < projList.Count; i++)
+                foreach (Projectile proj in projList)
                 {
-                    if (Collision.Collision.Check(enemy.CollisionRect(), projectile.ProjectilePos()))
+                    if (Collision.Collision.Check(enemy.CollisionRect(), proj.ProjectilePos()))
                     {
                         enemy.IsAlive(false);
-                        projectile.HasKilled(true);
+                        proj.HasKilled(true);
                         player.IncreasePlayerScore(true);
+                        enemyList.Remove(enemy);
+                        projList.Remove(proj);
                     }
                 }
             }
 
-            return GameStates.GamePlayState;
+            questAccepted = interaction.QuestAccepted();
+
+            if (questAccepted)
+                return GameStates.GPLevelState;
+            else
+                return GameStates.GamePlayState;
             //throw new NotImplementedException();
         }
 
@@ -110,6 +131,10 @@ namespace GitGudP2
             kip.Draw(renderWindow);
             player.Draw(renderWindow);
             interaction.Draw(renderWindow);
+            foreach (Enemy enemy in enemyList)
+                enemy.Draw(renderWindow);
+            foreach (Projectile proj in projList)
+                proj.Draw(renderWindow);
 
             renderWindow.Display();
         }

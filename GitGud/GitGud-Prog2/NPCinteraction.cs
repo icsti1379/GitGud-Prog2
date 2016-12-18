@@ -18,6 +18,12 @@ namespace GitGudP2
         string textContent;
         Font font;
         bool interactionPossible;
+        bool questAccepted;
+
+        public bool QuestAccepted()
+        {
+            return questAccepted;
+        }
 
         public bool getiPossible()
         {
@@ -53,17 +59,19 @@ namespace GitGudP2
             rectangle.OutlineColor = Color.Red;
             rectangle.OutlineThickness = 2;
 
+            questAccepted = false;
+
             interactionPossible = true;
             //TODO: oberes rausnehmen wenn collision fertig integriert ist
         }
-        public void Update()
+        public virtual void Update()
         {
             switch (identifier)
             {
                 case 1:
                     //input -> quest annehmen/ablehnen
-                    //y = annehmen
-                    //n = ablehnen
+                    //y = annehmen = questAccepted = true
+                    //n = ablehnen = quest Accepted = false
                     break;
                 case 2:
                     //input -> upgrades

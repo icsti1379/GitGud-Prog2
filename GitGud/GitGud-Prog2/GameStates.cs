@@ -18,6 +18,7 @@ namespace GitGudP2
         SplashScreenState = 1,
         MainMenuState = 11,
         GamePlayState = 21,
+        GPLevelState = 22,
         CreditScreenState = 31,
         PauseMenuState = 41,
         QuitState = 99

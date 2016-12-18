@@ -18,6 +18,7 @@ namespace GitGudP2
         private SplashScreen splashScreen;
         private MainMenu mainMenu;
         private GamePlay gamePlay;
+        private GPLevel gpLevel;
         private PauseMenu pauseMenu;
         private CreditScreen creditScreen;
 
@@ -90,10 +91,16 @@ namespace GitGudP2
                     InitializeState(gamePlay);
                     targetState = gamePlay.Update();
                     DisposeState(gamePlay);
-                    if (targetState == GameStates.CreditScreenState)
+                    if (targetState == GameStates.GPLevelState)
                     {
-                        gamePlay = new GamePlay();
+                        gpLevel = new GPLevel(gamePlay.GetPLayerLife(), gamePlay.GetPlayerRunSpeed(), gamePlay.GetPlayerDoubleScore());
                     }
+                    break;
+
+                case GameStates.GPLevelState:
+                    InitializeState(gpLevel);
+                    targetState = gpLevel.Update();
+                    DisposeState(gpLevel);
                     break;
 
                 case GameStates.QuitState:
@@ -120,6 +127,10 @@ namespace GitGudP2
 
                 case GameStates.CreditScreenState:
                     creditScreen.Draw(renderWindow);
+                    break;
+
+                case GameStates.GPLevelState:
+                    gpLevel.Draw(renderWindow);
                     break;
             }
         }
