@@ -41,9 +41,9 @@ namespace GitGudP2
             return player.GetLife();
         }
 
-        public int GetPlayerRunSpeed()
+        public float GetPlayerRunSpeed()
         {
-            return player.GetRunSpeed();
+            return player.GetMoveSpeed();
         }
 
         public bool GetPlayerDoubleScore()
@@ -129,7 +129,7 @@ namespace GitGudP2
             if (iUpgradeNPC.LifeUpgrade())
                 player.SetLife(true);
             if (iUpgradeNPC.RunSpeedUpgrade())
-                player.SetRunSpeed(2);
+                player.MoveSpeedUpgrade(2);
             if (iUpgradeNPC.DoubleScoreUpdate())
                 player.SetDoubleScore(true);
 

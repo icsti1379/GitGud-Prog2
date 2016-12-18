@@ -43,14 +43,19 @@ namespace GitGudP2
                 life++;
         }
 
-        public int GetRunSpeed()
+        public float GetMoveSpeed()
         {
-            return runSpeed;
+            return moveSpeed;
         }
 
-        public void SetRunSpeed(int multiplier)
+        public void SetMoveSpeed(float moveSpeed)
         {
-            runSpeed = runSpeed * multiplier;
+            this.moveSpeed = moveSpeed;
+        }
+
+        public void MoveSpeedUpgrade(float multiplier)
+        {
+            moveSpeed = moveSpeed * multiplier;
         }
 
         public bool GetDoubleScore()

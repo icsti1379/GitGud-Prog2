@@ -36,12 +36,12 @@ namespace GitGudP2
         /// <param name="playerLife"></param>
         /// <param name="playerRunSpeed"></param>
         /// <param name="playerDoubleScore"></param>
-        public GPLevel(int playerLife, int playerRunSpeed, bool playerDoubleScore)
+        public GPLevel(int playerLife, float playerRunSpeed, bool playerDoubleScore)
         {
             player = new Player();
             font = new Font("Font/arial.ttf");
             player.SetLife(playerLife);
-            player.SetRunSpeed(playerRunSpeed);
+            player.SetMoveSpeed(playerRunSpeed);
             player.SetDoubleScore(playerDoubleScore);
             view = new View(new Vector2f(0, 0), new Vector2f(1200, 700));
         }
