@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using SFML.Graphics;
 using SFML.System;
-using Collision;
 
 
 namespace GitGudP2
@@ -51,19 +50,19 @@ namespace GitGudP2
 
             foreach (IntRect rect in rectList)
             {
-                if (Collision.Collision.Check(rect, colBoxTop))
+                if (GitGudDll.Collision.Check(rect, colBoxTop))
                 {
                     newPos.Y = colBoxTop.Y + ((rect.Top + rect.Height) - colBoxTop.Y);
                 }
-                if (Collision.Collision.Check(rect, colBoxBottom))
+                if (GitGudDll.Collision.Check(rect, colBoxBottom))
                 {
                     newPos.Y = colBoxBottom.Y - (colBoxBottom.Y - rect.Top);
                 }
-                if (Collision.Collision.Check(rect, colBoxLeft))
+                if (GitGudDll.Collision.Check(rect, colBoxLeft))
                 {
                     newPos.X = colBoxTop.X + (rect.Left - colBoxLeft.X);
                 }
-                if (Collision.Collision.Check(rect, colBoxRight))
+                if (GitGudDll.Collision.Check(rect, colBoxRight))
                 {
                     newPos.X = colBoxRight.X - (colBoxRight.X - (rect.Left + rect.Width));
                 }
@@ -99,8 +98,8 @@ namespace GitGudP2
             colBoxLeft.X = translatedPos.X;
             colBoxLeft.Y = translatedPos.Y + offset / 2;
 
-            if (Collision.Collision.Check(colRect, colBoxTop) || Collision.Collision.Check(colRect, colBoxRight)
-                || Collision.Collision.Check(colRect, colBoxBottom) || Collision.Collision.Check(colRect, colBoxLeft))
+            if (GitGudDll.Collision.Check(colRect, colBoxTop) || GitGudDll.Collision.Check(colRect, colBoxRight)
+                || GitGudDll.Collision.Check(colRect, colBoxBottom) || GitGudDll.Collision.Check(colRect, colBoxLeft))
                 return true;
             else
                 return false;
@@ -132,8 +131,8 @@ namespace GitGudP2
 
             foreach (IntRect rect in rectList)
             {
-                if (Collision.Collision.Check(rect, colBoxTop) || Collision.Collision.Check(rect, colBoxRight)
-                || Collision.Collision.Check(rect, colBoxBottom) || Collision.Collision.Check(rect, colBoxLeft))
+                if (GitGudDll.Collision.Check(rect, colBoxTop) || GitGudDll.Collision.Check(rect, colBoxRight)
+                || GitGudDll.Collision.Check(rect, colBoxBottom) || GitGudDll.Collision.Check(rect, colBoxLeft))
                     isColliding = true;
                 else
                     isColliding = false;

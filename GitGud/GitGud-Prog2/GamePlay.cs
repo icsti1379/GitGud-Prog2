@@ -114,7 +114,7 @@ namespace GitGudP2
             {
                 foreach (Projectile proj in projList)
                 {
-                    if (Collision.Collision.Check(enemy.CollisionRect(), proj.ProjectilePos()))
+                    if (GitGudDll.Collision.Check(enemy.CollisionRect(), proj.ProjectilePos()))
                     {
                         enemy.IsAlive(false);
                         proj.HasKilled(true);
