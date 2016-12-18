@@ -14,11 +14,11 @@ namespace GitGudP2
     {
         IntRect interactionRect;
         Vector2f position;
-        NPCinteraction npcInteraction;
+        NPCinteraction questNPCInteraction;
         public QuestNPC() : base("sprites/questNPC", 64)
         {
             interactionRect = new IntRect((int)position.X - 5, (int)position.Y - 5, 74, 74);
-            npcInteraction = new NPCinteraction(1);
+            questNPCInteraction = new QuestNPCInteraction();
         }
 
         public override void Update(float deltaTime)

@@ -12,21 +12,21 @@ namespace GitGudP2
 {
     class UpgradeNPCInteraction : NPCinteraction
     {
-        bool upgrade1, upgrade2, upgrade3;
+        bool lifeUpgrade, runSpeedUpgrade, doubleScoreUpgrade;
 
-        public bool Upgrade1()
+        public bool LifeUpgrade()
         {
-            return upgrade1;
+            return lifeUpgrade;
         }
 
-        public bool Upgrade2()
+        public bool RunSpeedUpgrade()
         {
-            return upgrade2;
+            return runSpeedUpgrade;
         }
 
-        public bool Upgrade3()
+        public bool DoubleScoreUpdate()
         {
-            return upgrade3;
+            return doubleScoreUpgrade;
         }
 
         public UpgradeNPCInteraction() : base()
@@ -44,9 +44,9 @@ namespace GitGudP2
             text4 = new Text(textContent, font);
             text4.Position = text2Pos;
 
-            upgrade1 = false;
-            upgrade2 = false;
-            upgrade3 = false;
+            lifeUpgrade = false;
+            runSpeedUpgrade = false;
+            doubleScoreUpgrade = false;
         }
 
         public override void Update()

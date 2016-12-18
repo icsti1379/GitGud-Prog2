@@ -114,11 +114,11 @@ namespace GitGudP2
                 }
             }
 
-            if (iUpgradeNPC.Upgrade1())
+            if (iUpgradeNPC.LifeUpgrade())
                 player.SetLife(true);
-            if (iUpgradeNPC.Upgrade2())
+            if (iUpgradeNPC.RunSpeedUpgrade())
                 player.SetRunSpeed(2);
-            if (iUpgradeNPC.Upgrade3())
+            if (iUpgradeNPC.DoubleScoreUpdate())
                 player.SetDoubleScore(true);
 
             if (iQuestNPC.QuestAccepted())

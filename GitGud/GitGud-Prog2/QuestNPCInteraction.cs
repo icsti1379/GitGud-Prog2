@@ -23,7 +23,13 @@ namespace GitGudP2
             textContent = "Dies ist ein Quest text";
             text1 = new Text(textContent, font);
             text1.Position = text1Pos;
-            textContent = "Y/N";
+            textContent = "er geht weiter";
+            text2 = new Text(textContent, font);
+            text2.Position = text2Pos;
+            textContent = "und weiter";
+            text3 = new Text(textContent, font);
+            text3.Position = text3Pos;
+            textContent = "Annehmen? Y/N";
             text4 = new Text(textContent, font);
             text4.Position = text2Pos;
         }
