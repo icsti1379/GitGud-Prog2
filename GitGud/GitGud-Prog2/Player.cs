@@ -16,6 +16,8 @@ namespace GitGudP2
     class Player : AnimatedCharacter
     {
         //TODO: überall wo playerposition verwendet wird, muss diese erst von tilemap pos auf normal pos umgerechnet werden
+        // überlegen wie score in coins umgerechnet wird
+        //movespeedupgrade auf movespeed anwenden
         Vector2f playerPos;
         bool quest, hasFired;
         int score, life, runSpeed;
