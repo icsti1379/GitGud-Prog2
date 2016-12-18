@@ -14,6 +14,15 @@ namespace GitGudP2
     public class MainMenu : State
     {
         Text mainMenuMessage;
+        private Music mainMenuMusic;
+
+        public MainMenu()
+        {
+            mainMenuMusic = new Music("Music/MainMenuSong.mp3");
+            mainMenuMessage = new Text("Press Enter to start", new Font("Font/arial.ttf"));
+            mainMenuMessage.Position = new Vector2f(50, 50);
+            Initialize();
+        }
         public override void Dispose()
         {
             //throw new notimplementedexception();
@@ -21,8 +30,7 @@ namespace GitGudP2
 
         public override void Initialize()
         {
-            //mainMenuMessage = new Text("Press Enter to start", new Font("Font/arial.ttf"));
-            //mainMenuMessage.Position = new Vector2f(50, 50);
+            mainMenuMusic.Play();
             //throw new notimplementedexception();
         }
 

@@ -25,6 +25,9 @@ namespace GitGudP2
         Clock clock;
         Text text;
         Font font;
+        private SoundBuffer shootSoundBuffer, deathSoundBuffer;
+        private Sound shootSound, deathSound;
+        private Music gameMusic;
         string textContent, textcontent2;
 
         int enemyCounter;
@@ -44,6 +47,12 @@ namespace GitGudP2
             player.SetMoveSpeed(playerRunSpeed);
             player.SetDoubleScore(playerDoubleScore);
             view = new View(new Vector2f(0, 0), new Vector2f(1200, 700));
+            gameMusic = new Music("Music/GameSong1.mp3");
+            gameMusic.Play();
+            shootSoundBuffer = new SoundBuffer("Sounds/shoot.wav");
+            shootSound = new Sound(shootSoundBuffer);
+            deathSoundBuffer = new SoundBuffer("Sounds/death.wav");
+            deathSound = new Sound(deathSoundBuffer);
         }
 
         public override GameStates Update()
@@ -66,28 +75,31 @@ namespace GitGudP2
             foreach (Enemy enemy in enemyList)
                 enemy.PlayerPos(playerPos);
 
-            ///schauen ob der spieler gefeuert hat und danach erzeugen des projektils bzw.
-            ///der gegner wenn weniger als enemycounter aktiv sind
+            //schauen ob der spieler gefeuert hat und danach erzeugen des projektils bzw.
+            //er gegner wenn weniger als enemycounter aktiv sind
             pHasFired = player.HasFired();
 
             if (enemyCounter < 10)
                 enemyList.Add(new Enemy(enemyCounter));
 
             if (pHasFired)
+            {
                 projList.Add(new Projectile(playerPos, 1));
-
+                shootSound.Play();
+            }
             //überprüft ob ein projektil einen gegner getroffen hat und handelt
             foreach (Enemy enemy in enemyList)
             {
                 foreach (Projectile proj in projList)
                 {
-                    if (Collision.Collision.Check(enemy.CollisionRect(), proj.ProjectilePos()))
+                    if (GitGudDll.Collision.Check(enemy.CollisionRect(), proj.ProjectilePos()))
                     {
                         enemy.IsAlive(false);
                         proj.HasKilled(true);
                         player.IncreasePlayerScore(true);
                         enemyList.Remove(enemy);
                         projList.Remove(proj);
+                        deathSound.Play();
                     }
                 }
             }

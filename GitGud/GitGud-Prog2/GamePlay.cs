@@ -31,6 +31,9 @@ namespace GitGudP2
         int enemyCounter;
         Vector2f playerPos, projectilePos;
         private bool pHasFired, questAccepted;
+        private Music hubMusic;
+        private SoundBuffer upgradSoundBuffer;
+        private Sound upgradeSound;
 
         /// <summary>
         /// nachfolgend 3 getter um die attribute vom spieler zwischen den verschiedenen gameplay states bei zu behalten
@@ -70,6 +73,10 @@ namespace GitGudP2
 
             iUpgradeNPC = new UpgradeNPCInteraction();
             iQuestNPC = new QuestNPCInteraction();
+
+            hubMusic = new Music("Music/HubSong.mp3");
+            upgradSoundBuffer = new SoundBuffer("Sounds/upgrade.wav");
+            upgradeSound = new Sound(upgradSoundBuffer);
         }
 
         public override void Dispose()
@@ -127,11 +134,20 @@ namespace GitGudP2
 
             //falls upgrades gekauft wurden, anwenden dieser auf den Spieler
             if (iUpgradeNPC.LifeUpgrade())
+            {
                 player.SetLife(true);
+                upgradeSound.Play();
+            }
             if (iUpgradeNPC.RunSpeedUpgrade())
+            {
                 player.MoveSpeedUpgrade(2);
+                upgradeSound.Play();
+            }
             if (iUpgradeNPC.DoubleScoreUpdate())
+            {
                 player.SetDoubleScore(true);
+                upgradeSound.Play();
+            }
 
             //State wechsel, falls quest gestartet wurde
             if (iQuestNPC.QuestAccepted())
