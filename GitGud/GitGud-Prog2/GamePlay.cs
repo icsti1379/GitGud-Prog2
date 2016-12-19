@@ -28,7 +28,7 @@ namespace GitGudP2
         Clock clock;
         QuestNPCInteraction iQuestNPC;
         UpgradeNPCInteraction iUpgradeNPC;
-        int enemyCounter;
+        int enemyCounter, maxScore;
         Vector2f playerPos, projectilePos;
         private bool pHasFired, questAccepted;
         private Music hubMusic;
@@ -52,6 +52,11 @@ namespace GitGudP2
         public bool GetPlayerDoubleScore()
         {
             return player.GetDoubleScore();
+        }
+
+        public int GetMaxScore()
+        {
+            return maxScore;
         }
         public GamePlay()
         {
@@ -136,22 +141,28 @@ namespace GitGudP2
             if (iUpgradeNPC.LifeUpgrade())
             {
                 player.SetLife(true);
+                player.SubstractCoins(5);
                 upgradeSound.Play();
             }
             if (iUpgradeNPC.RunSpeedUpgrade())
             {
                 player.MoveSpeedUpgrade(2);
+                player.SubstractCoins(10);
                 upgradeSound.Play();
             }
             if (iUpgradeNPC.DoubleScoreUpdate())
             {
                 player.SetDoubleScore(true);
+                player.SubstractCoins(15);
                 upgradeSound.Play();
             }
 
             //State wechsel, falls quest gestartet wurde
             if (iQuestNPC.QuestAccepted())
+            {
+                maxScore = 25;
                 return GameStates.GPLevelState;
+            }
             else
                 return GameStates.GamePlayState;
             //throw new NotImplementedException();

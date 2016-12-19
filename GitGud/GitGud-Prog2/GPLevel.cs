@@ -30,7 +30,7 @@ namespace GitGudP2
         private Music gameMusic;
         string textContent, textcontent2;
 
-        int enemyCounter;
+        int enemyCounter, maxScore;
         bool pHasFired;
 
         /// <summary>
@@ -39,8 +39,9 @@ namespace GitGudP2
         /// <param name="playerLife"></param>
         /// <param name="playerRunSpeed"></param>
         /// <param name="playerDoubleScore"></param>
-        public GPLevel(int playerLife, float playerRunSpeed, bool playerDoubleScore)
+        public GPLevel(int playerLife, float playerRunSpeed, bool playerDoubleScore, int maxScore)
         {
+            this.maxScore = maxScore;
             player = new Player();
             font = new Font("Font/arial.ttf");
             player.SetLife(playerLife);
@@ -109,7 +110,12 @@ namespace GitGudP2
             textcontent2 = "Score: ";
             text = new Text(textContent + textcontent2, font);
 
-            return GameStates.GPLevelState;
+            if (player.GetLife() <= 0)
+                return GameStates.GameOverState;
+            if (player.GetPlayerScore() == maxScore)
+                return GameStates.GamePlayState;
+            else
+                return GameStates.GPLevelState;
 
             //throw new NotImplementedException();
         }

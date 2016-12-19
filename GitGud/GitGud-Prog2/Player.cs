@@ -21,6 +21,7 @@ namespace GitGudP2
         Vector2f playerPos;
         bool quest, hasFired;
         int score, life, runSpeed;
+        float coins;
         bool doubleScore;
 
         /// <summary>
@@ -76,6 +77,7 @@ namespace GitGudP2
         public void IncreasePlayerScore(bool scoreIncrease)
         {
             score++;
+            coins += 0.5f;
         }
         public Vector2f getPlayerPos()
         {
@@ -92,7 +94,15 @@ namespace GitGudP2
             return hasFired;
         }
 
-        public bool Quest { get; set; }
+        public float GetCoins()
+        {
+            return coins;
+        }
+
+        public void SubstractCoins(float coinsSpend)
+        {
+            coins -= coinsSpend;
+        }
         public Player() : base("Sprites/male_01.png", 64)
         {
             Anim_Up = new Animation(512, 0, 9);

@@ -93,7 +93,7 @@ namespace GitGudP2
                     DisposeState(gamePlay);
                     if (targetState == GameStates.GPLevelState)
                     {
-                        gpLevel = new GPLevel(gamePlay.GetPLayerLife(), gamePlay.GetPlayerRunSpeed(), gamePlay.GetPlayerDoubleScore());
+                        gpLevel = new GPLevel(gamePlay.GetPLayerLife(), gamePlay.GetPlayerRunSpeed(), gamePlay.GetPlayerDoubleScore(), gamePlay.GetMaxScore());
                     }
                     break;
 
