@@ -108,6 +108,7 @@ namespace GitGudP2
             //nachfolgend werden alle entitäten auf der map geupdated
             kip.Update(deltaTime);
             player.Update(deltaTime);
+            _interface.Update();
             foreach (Enemy enemy in enemyList)
                 enemy.Update(deltaTime);
             foreach (Projectile proj in projList)
