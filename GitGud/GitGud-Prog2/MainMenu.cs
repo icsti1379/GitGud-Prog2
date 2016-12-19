@@ -26,16 +26,14 @@ namespace GitGudP2
             mainMenuMusic = new Music("Music/MainMenuSong.ogg");
 
             mainMenuFont = new Font("Font/arial.ttf");
-            mainMenuMessage1 = new Text("Press Enter to start the game.", mainMenuFont,28);
-            mainMenuMessage1.Position = new Vector2f(580, 380);
+            mainMenuMessage1 = new Text("Press Enter to start the game.", mainMenuFont,64);
+            mainMenuMessage1.Position = new Vector2f(300, 300);
 
-            mainMenuMessage2 = new Text("Press C for credits screen.", mainMenuFont, 28);
-            mainMenuMessage2.Position = new Vector2f(580, 420);
+            mainMenuMessage2 = new Text("Press C for credits screen.", mainMenuFont, 64);
+            mainMenuMessage2.Position = new Vector2f(300, 480);
 
             mainMenuBackground = new Texture("Pictures/mainmenu_background.jpg");
             menuSprite = new Sprite(mainMenuBackground);
-
-            targetState = GameStates.MainMenuState;
 
             Initialize();
         }
@@ -55,6 +53,8 @@ namespace GitGudP2
         public override void Draw()
         {
             Game.WindowInstance().Draw(menuSprite);
+            Game.WindowInstance().Draw(mainMenuMessage1);
+            Game.WindowInstance().Draw(mainMenuMessage2);
         }
 
         public override void HandleInput(Keyboard.Key key, bool isPressed)

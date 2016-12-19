@@ -52,7 +52,6 @@ namespace GitGudP2
                     tiles[x, y].Position = new Vector2f(tileSize * x, tileSize * y);
                 }
             }
-
             reader.Close();
         }
 

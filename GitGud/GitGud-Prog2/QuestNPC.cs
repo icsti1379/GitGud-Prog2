@@ -18,8 +18,13 @@ namespace GitGudP2
         IntRect interactionRect;
         Vector2f position;
         NPCinteraction questNPCInteraction;
-        public QuestNPC() : base("sprites/questNPC", 64)
+        public QuestNPC() : base("Sprites/Characters/fem_orc.png", 64)
         {
+            Anim_Up = new Animation(512, 0, 9);
+            Anim_Left = new Animation(578, 0, 9);
+            Anim_Down = new Animation(640, 0, 9);
+            Anim_Right = new Animation(704, 0, 9);
+
             interactionRect = new IntRect((int)position.X - 5, (int)position.Y - 5, 74, 74);
             questNPCInteraction = new QuestNPCInteraction();
         }

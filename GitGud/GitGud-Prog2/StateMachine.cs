@@ -135,7 +135,6 @@ namespace GitGudP2
         /// <summary>
         /// Draws the current/active state.
         /// </summary>
-        /// <param name="renderWindow"></param>
         public void Draw()
         {
             switch (currentState)

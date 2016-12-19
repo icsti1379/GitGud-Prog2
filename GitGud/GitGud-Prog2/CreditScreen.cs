@@ -17,7 +17,7 @@ namespace GitGudP2
         private Text creditScreenText, creditScreenText1, creditScreenText2;
         private Font creditScreenFont;
 
-        private Texture creditsScreen;
+        private Texture creditScreen;
         private Sprite creditSprite;
 
         private GameStates targetState;
@@ -33,8 +33,8 @@ namespace GitGudP2
             creditScreenText2 = new Text("Benjamin Lehnert.", creditScreenFont, 32);
             creditScreenText2.Position = new Vector2f(580, 440);
 
-            creditsScreen = new Texture("Pictures/creditsscreen_background.jpg");
-            creditSprite = new Sprite(creditSprite);
+            creditScreen = new Texture("Pictures/creditsscreen_background.jpg");
+            creditSprite = new Sprite(creditScreen);
 
             targetState = GameStates.CreditScreenState;
         }
@@ -45,6 +45,9 @@ namespace GitGudP2
 
         public override void Draw()
         {
+            Game.WindowInstance().Draw(creditScreenText);
+            Game.WindowInstance().Draw(creditScreenText1);
+            Game.WindowInstance().Draw(creditScreenText2);
             Game.WindowInstance().Draw(creditSprite);
         }
 

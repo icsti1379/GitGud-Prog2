@@ -29,7 +29,7 @@ namespace GitGudP2
         /// und erzeugt ein rechteck um das sprite für die Kollisionsabfrage
         /// </summary>
         /// <param name="enemyCounter">anzahl der momentanen gegner auf der map, wird als seed für die spawn location genommen</param>
-        public Enemy(int enemyCounter) : base("Sprites/Enemy/enemy01", 64)
+        public Enemy(int enemyCounter) : base("Sprites/Enemy/enemy01.png", 64)
         {
             Anim_Up = new Animation(0, 0, 10);
             Anim_Left = new Animation(64, 0, 10);
@@ -38,27 +38,34 @@ namespace GitGudP2
 
             waypoints = new List<Waypoint>();
             rand = new Random();
-            seed = enemyCounter % 4;
 
-            switch (seed)
-            {
-                case 1:
-                    enemyPos.X = 40 + rand.Next() % 1200;
-                    enemyPos.Y = 20 + rand.Next() % 20;
-                    break;
-                case 2:
-                    enemyPos.X = 40 + rand.Next() % 40;
-                    enemyPos.Y = 20 + rand.Next() % 760;
-                    break;
-                case 3:
-                    enemyPos.X = 40 + rand.Next() % 1200;
-                    enemyPos.Y = 780 - rand.Next() % 20;
-                    break;
-                case 4:
-                    enemyPos.X = 1240 - rand.Next() % 40;
-                    enemyPos.Y = 20 + rand.Next() % 760;
-                    break;
-            }
+            //enemyPos.X = 40 + rand.Next() % 100;
+            //enemyPos.Y = 20 + rand.Next() % 20;
+
+            //collisionRect = new IntRect((int)enemyPos.X, (int)enemyPos.Y, 64, 64);
+
+             seed = enemyCounter % 4;
+             Console.WriteLine("seed is " +seed);
+
+             switch (seed)
+             {
+                 case 0:
+                     enemyPos.X = 40 + rand.Next() % 1200;
+                     enemyPos.Y = 20 + rand.Next() % 20;
+                     break;
+                 case 1:
+                     enemyPos.X = 40 + rand.Next() % 40;
+                     enemyPos.Y = 20 + rand.Next() % 760;
+                     break;
+                 case 2:
+                     enemyPos.X = 40 + rand.Next() % 1200;
+                     enemyPos.Y = 780 - rand.Next() % 20;
+                     break;
+                 case 3:
+                     enemyPos.X = 1240 - rand.Next() % 40;
+                     enemyPos.Y = 20 + rand.Next() % 760;
+                     break;
+             }
 
             collisionRect = new IntRect((int)enemyPos.X, (int)enemyPos.Y, 64, 64);
         }

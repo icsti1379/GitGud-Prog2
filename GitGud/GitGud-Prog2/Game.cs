@@ -34,10 +34,10 @@ namespace GitGudP2
             return window;
         }
 
-        static void Start()
+        public void Start()
         {
-            window.SetActive();
-            window.SetFramerateLimit(60);
+            Game.WindowInstance().SetActive();
+            Game.WindowInstance().SetFramerateLimit(60);
 
             stateMachine = new StateMachine();
             

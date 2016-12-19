@@ -15,13 +15,20 @@ namespace GitGudP2
     public class SplashScreen : State
     {
         Clock clock;
-        Texture splashTexture;
-        Sprite splashSprite;
-        
+        private Texture splashTexture;
+        private Sprite splashSprite;
+        private Text splashScreenMessage;
+        private Font splashScreenFont;
+
         public SplashScreen()
         {
+            splashScreenFont = new Font("Font/arial.ttf");
+            splashScreenMessage = new Text("GitGudP2", splashScreenFont, 128);
+            splashScreenMessage.Position = new Vector2f(400, 320);
+
             splashTexture = new Texture("Pictures/splashscreen.png");
             splashSprite = new Sprite(splashTexture);
+
             Initialize();
         }
 
@@ -44,10 +51,15 @@ namespace GitGudP2
         public override void Draw()
         {
             Game.WindowInstance().Draw(splashSprite);
+            Game.WindowInstance().Draw(splashScreenMessage);
         }
 
         public override GameStates Update()
         {
+            if (clock.ElapsedTime.AsSeconds() >= 3f)
+            {
+                return GameStates.MainMenuState;
+            }
             return GameStates.SplashScreenState;
         }
     }

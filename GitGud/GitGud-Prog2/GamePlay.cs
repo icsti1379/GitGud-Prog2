@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,17 +19,18 @@ namespace GitGudP2
     public class GamePlay : State
     {
         Player player;
-        Enemy enemy;
-        List<Enemy> enemyList;
+        //Enemy enemy;
+        List<Enemy> enemyList = new List<Enemy>();
+        //Enemy addEnemy;
         Projectile projectile;
-        List<Projectile> projList;
+        List<Projectile> projList = new List<Projectile>();
         View view;
         Map map;
         Chicken kip;
         Clock clock;
         QuestNPCInteraction iQuestNPC;
         UpgradeNPCInteraction iUpgradeNPC;
-        int enemyCounter;
+        int enemyCounter = 1;
         Vector2f playerPos, projectilePos;
         private bool pHasFired, questAccepted;
         private Music hubMusic;
@@ -59,7 +61,7 @@ namespace GitGudP2
             view = new View(new Vector2f(0, 0), new Vector2f(1200, 700));
 
             player = new Player();
-
+            //enemy = new Enemy(0);
             kip = new Chicken();
 
             kip.Waypoints = new List<Waypoint>();
@@ -68,6 +70,7 @@ namespace GitGudP2
             kip.Waypoints.Add(new Waypoint(50, 50));
             kip.Waypoints.Add(new Waypoint(0, 50));
 
+            
 
             clock = new Clock();
 
@@ -102,11 +105,38 @@ namespace GitGudP2
         {
             float deltaTime = clock.Restart().AsSeconds();
 
+            //while (enemyCounter < 20)
+            //{
+            //    addEnemy = new Enemy(1);
+            //    enemyCounter++;
+
+            //    Console.WriteLine("enemy" + addEnemy);
+            //}
+
+
+
+            //generieren neuer gegner, oder projektile
+            if (enemyCounter < 10)
+            {
+                Console.WriteLine("enemy counter " + enemyCounter);
+                enemyCounter++;
+
+                enemyList.Add(new Enemy(enemyCounter));
+
+            }
+
+            if (pHasFired)
+                projList.Add(new Projectile(playerPos, 1));
+
             //nachfolgend werden alle entitäten auf der map geupdated
             kip.Update(deltaTime);
             player.Update(deltaTime);
-            foreach (Enemy eEnemy in enemyList)
-                eEnemy.Update(deltaTime);
+            foreach (Enemy fEnemy in enemyList)
+            {
+                fEnemy.Update(deltaTime);
+                fEnemy.PlayerPos(playerPos);
+            }
+                
             foreach (Projectile proj in projList)
                 proj.Update(deltaTime);
 
@@ -114,27 +144,20 @@ namespace GitGudP2
 
             //holen der verschiedenen variablen für die Kollision
             playerPos = player.getPlayerPos();
-            enemy.PlayerPos(playerPos);
             pHasFired = player.HasFired();
 
-            //generieren neuer gegner, oder projektile
-            if (enemyCounter < 10)
-                enemyList.Add(new Enemy(enemyCounter));
-
-            if (pHasFired)
-                projList.Add(new Projectile(playerPos, 1));
 
             //überprüft ob ein Projektil einen Gegner getroffen hat und was danach passiert
-            foreach (Enemy eEnemy in enemyList)
+            foreach (Enemy fEnemy in enemyList)
             {
                 foreach (Projectile proj in projList)
                 {
-                    if (GitGudDll.Collision.Check(eEnemy.CollisionRect(), proj.ProjectilePos()))
+                    if (GitGudDll.Collision.Check(fEnemy.CollisionRect(), proj.ProjectilePos()))
                     {
-                        eEnemy.IsAlive(false);
+                        fEnemy.IsAlive(false);
                         proj.HasKilled(true);
                         player.IncreasePlayerScore(true);
-                        enemyList.Remove(eEnemy);
+                        enemyList.Remove(fEnemy);
                         projList.Remove(proj);
                     }
                 }
@@ -174,15 +197,14 @@ namespace GitGudP2
             map.Draw();
             kip.Draw();
             player.Draw();
-            iQuestNPC.Draw();
-            iUpgradeNPC.Draw();
-            foreach (Enemy enemy in enemyList)
-                enemy.Draw();
+            //iQuestNPC.Draw();
+            //iUpgradeNPC.Draw();
+            foreach (Enemy fEnemy in enemyList)
+                fEnemy.Draw();
             foreach (Projectile proj in projList)
                 proj.Draw();
-
+            //addEnemy.Draw();
             Game.WindowInstance().Display();
         }
-
     }
 }
