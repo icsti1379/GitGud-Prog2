@@ -12,14 +12,16 @@ namespace GitGudP2
 {
     class Player : AnimatedCharacter
     {
-         public Player() : base("Sprites/male_01.png", 64)
+         public Player() : base("Sprites/Characters/warrior.png", 64)
         {
+            // Define directions on spritesheet
             Anim_Up = new Animation(512, 0, 9);
             Anim_Left = new Animation(578, 0, 9);
             Anim_Down = new Animation(640, 0, 9);
             Anim_Right = new Animation(704, 0, 9);
 
-            moveSpeed = 150;
+            // Set moving and animation speed
+            moveSpeed = 200;
             animationSpeed = 0.05f;
         }
         public override void Update(float deltaTime)
@@ -45,5 +47,26 @@ namespace GitGudP2
 
             base.Update(deltaTime);
         }
+
+        //protected void PlayerRotation()
+        //{
+        //    // Calculating Mouse Position using the Character Position as Origin
+        //    vMousePositionFromPlayer = (Vector2i)CharacterPosition + new Vector2i(25, 25) - Input.vMousePosition;
+
+
+        //    // Calculating Angle of the Mouse Position relative to the Character
+        //    iAngle = (float)Math.Acos((vMousePositionFromPlayer.X * 0 + vMousePositionFromPlayer.Y * 1) /
+                                            //(Math.Sqrt(Math.Pow(vMousePositionFromPlayer.X, 2) + Math.Pow(vMousePositionFromPlayer.Y, 2)) * Math.Sqrt(Math.Pow(0, 2) + Math.Pow(1, 2))));
+
+        //    iAngle = (iAngle / (float)Math.PI * 180);
+
+        //    if (vMousePositionFromPlayer.X > 0)
+        //        iAngle = 360 - iAngle;
+
+
+        //    // Rotating Character
+        //    sEntity.Origin = new Vector2f(25, 25);
+        //    sEntity.Rotation = iAngle;
+        //}
     }
 }

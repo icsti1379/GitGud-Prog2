@@ -14,8 +14,10 @@ namespace GitGudP2
     class Map
     {
         Sprite[,] tiles;
-        int mapWidth = 100;
-        int mapHeight = 100;
+
+        // Define map size
+        int mapWidth = 20;
+        int mapHeight = 20;
 
         public Map()
         {
@@ -36,7 +38,7 @@ namespace GitGudP2
             }
 
             tiles = new Sprite[mapWidth, mapHeight];
-            StreamReader reader = new StreamReader("Maps/test.csv");
+            StreamReader reader = new StreamReader("Maps/hub_map.csv");
 
             for(int y = 0; y < mapHeight; y++)
             {
