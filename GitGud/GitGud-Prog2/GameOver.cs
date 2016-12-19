@@ -26,10 +26,16 @@ namespace GitGudP2
 
         public override GameStates Update()
         {
+            //if (InputManager.Return)
+            //    return GameStates.GamePlayState;
+            //else
+                return GameStates.GameOverState;
             throw new NotImplementedException();
         }
         public override void Draw(RenderWindow renderWindow)
         {
+            renderWindow.Clear(Color.Green);
+            renderWindow.Display();
             throw new NotImplementedException();
         }
     }

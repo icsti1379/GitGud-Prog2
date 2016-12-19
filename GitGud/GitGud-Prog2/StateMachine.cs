@@ -21,6 +21,7 @@ namespace GitGudP2
         private GPLevel gpLevel;
         private PauseMenu pauseMenu;
         private CreditScreen creditScreen;
+        private GameOver gameOver;
 
         public GameStates CurrentState
         {
@@ -44,6 +45,7 @@ namespace GitGudP2
             gamePlay = new GamePlay();
             pauseMenu = new PauseMenu();
             creditScreen = new CreditScreen();
+            gameOver = new GameOver();
         }
 
         private void InitializeState(State state)
@@ -90,17 +92,23 @@ namespace GitGudP2
                 case GameStates.GamePlayState:
                     InitializeState(gamePlay);
                     targetState = gamePlay.Update();
-                    DisposeState(gamePlay);
                     if (targetState == GameStates.GPLevelState)
                     {
                         gpLevel = new GPLevel(gamePlay.GetPLayerLife(), gamePlay.GetPlayerRunSpeed(), gamePlay.GetPlayerDoubleScore(), gamePlay.GetMaxScore());
                     }
+                    DisposeState(gamePlay);
                     break;
 
                 case GameStates.GPLevelState:
                     InitializeState(gpLevel);
                     targetState = gpLevel.Update();
                     DisposeState(gpLevel);
+                    break;
+
+                case GameStates.GameOverState:
+                    InitializeState(gameOver);
+                    targetState = gameOver.Update();
+                    DisposeState(gameOver);
                     break;
 
                 case GameStates.QuitState:
@@ -131,6 +139,10 @@ namespace GitGudP2
 
                 case GameStates.GPLevelState:
                     gpLevel.Draw(renderWindow);
+                    break;
+
+                case GameStates.GameOverState:
+                    gameOver.Draw(renderWindow);
                     break;
             }
         }
