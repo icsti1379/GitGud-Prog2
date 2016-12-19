@@ -53,7 +53,7 @@ namespace GitGud_Prog2
             get { return sprite.GetGlobalBounds(); }
         }
 
-        public Tile()
+        public Tiles()
         {
 
         }
