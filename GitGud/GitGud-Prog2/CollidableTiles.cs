@@ -22,7 +22,7 @@ namespace GitGud_Prog2
             //TODO CORRECT TILE PATH
             switch (type)
             {
-                case NormalTileType.Black:
+                case CollidableTileType.Black:
                     texture = new Texture("Maps/terrain.png", new IntRect(new Vector2i(17 * 32, 4 * 32), new Vector2i(32, 32)));
                     break;
 
