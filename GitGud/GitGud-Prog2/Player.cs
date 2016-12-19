@@ -20,7 +20,7 @@ namespace GitGudP2
         //movespeedupgrade auf movespeed anwenden
         Vector2f playerPos;
         bool quest, hasFired;
-        int score, life, runSpeed;
+        int score, life, runSpeed, questScore;
         float coins;
         bool doubleScore;
 
@@ -29,6 +29,21 @@ namespace GitGudP2
         /// benötigt für Upgrades, Collision und andere sachen
         /// </summary>
         /// <returns></returns>
+
+        public void SetQuestScore(int score)
+        {
+            questScore = score;
+        }
+
+        public void SubstractQuestScore()
+        {
+            questScore -= 1;
+        }
+
+        public int GetQuestScore()
+        {
+            return questScore;
+        }
         public int GetLife()
         {
             return life;

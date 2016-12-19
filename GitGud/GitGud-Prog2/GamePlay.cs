@@ -28,12 +28,14 @@ namespace GitGudP2
         Clock clock;
         QuestNPCInteraction iQuestNPC;
         UpgradeNPCInteraction iUpgradeNPC;
+        CollisionHandling collisionHandling;
         int enemyCounter, maxScore;
-        Vector2f playerPos, projectilePos;
+        Vector2f playerPos, projectilePos, projDirection;
         private bool pHasFired, questAccepted;
         private Music hubMusic;
         private SoundBuffer upgradSoundBuffer;
         private Sound upgradeSound;
+        Interface _interface;
 
         /// <summary>
         /// nachfolgend 3 getter um die attribute vom spieler zwischen den verschiedenen gameplay states bei zu behalten
@@ -82,6 +84,10 @@ namespace GitGudP2
             hubMusic = new Music("Music/HubSong.wav");
             upgradSoundBuffer = new SoundBuffer("Sounds/upgrade.wav");
             upgradeSound = new Sound(upgradSoundBuffer);
+
+            collisionHandling = new CollisionHandling();
+
+            _interface = new Interface();
         }
 
         public override void Dispose()
@@ -119,7 +125,25 @@ namespace GitGudP2
                 enemyList.Add(new Enemy(enemyCounter));
 
             if (pHasFired)
-                projList.Add(new Projectile(playerPos, 1));
+            {
+                switch (player.CurrentState)
+                {
+                    case CharacterState.MovingUp:
+                        projDirection = new Vector2f(0, 1);
+                        break;
+                    case CharacterState.MovingDown:
+                        projDirection = new Vector2f(0, -1);
+                        break;
+                    case CharacterState.MovingLeft:
+                        projDirection = new Vector2f(-1, 0);
+                        break;
+                    case CharacterState.MovingRight:
+                        projDirection = new Vector2f(1, 0);
+                        break;
+
+                }
+                projList.Add(new Projectile(playerPos, projDirection));
+            }
 
             //überprüft ob ein Projektil einen Gegner getroffen hat und was danach passiert
             foreach (Enemy enemy in enemyList)
@@ -136,6 +160,13 @@ namespace GitGudP2
                     }
                 }
             }
+
+            //player.setPlayerPos(collisionHandling.WithTerrain(map.GetColRect, player.getPlayerPos, 64));
+
+            //foreach (Enemy enemy in enemyList)
+            //{
+            //    enemy.SetEnemyPos(collisionHandling.WithTerrain(map.GetColRect, enemy.EnemyPos, 64));
+            //}
 
             //falls upgrades gekauft wurden, anwenden dieser auf den Spieler
             if (iUpgradeNPC.LifeUpgrade())
@@ -157,10 +188,15 @@ namespace GitGudP2
                 upgradeSound.Play();
             }
 
+            _interface.SetPlayerLife(player.GetLife());
+            _interface.SetPlayerPoints((int)player.GetCoins());
+            _interface.SetPlayerScore(player.GetPlayerScore());
+            _interface.SetQuestCount(player.GetQuestScore());
+
             //State wechsel, falls quest gestartet wurde
             if (iQuestNPC.QuestAccepted())
             {
-                maxScore = 25;
+                player.SetQuestScore(25);
                 return GameStates.GPLevelState;
             }
             else

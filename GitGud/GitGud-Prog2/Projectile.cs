@@ -18,22 +18,21 @@ namespace GitGudP2
     {
         Vector2f projectilePos;
         Vector2f newProjPos;
-        float projectileDirection;
-        int travelSpeedX;
-        int travelSpeedY;
+        Vector2f projectileDirection;
+        int travelSpeed;
         CollisionHandling CollisionHandling;
         Sprite projectileSprite;
         CircleShape projDisplay;
         bool hasKilled;
 
-        public Projectile (Vector2f originPos, float direction)
+        public Projectile (Vector2f originPos, Vector2f direction)
         {
+            travelSpeed = 10;
             //Umrechnen von der tilemap position des Spielers auf das normale Koordinatensystem
             //dient als startposition des geschosses
-            projectilePos.X = (1280 / 2) + originPos.X;
-            projectilePos.Y = (800 / 2) + originPos.Y;
+            projectilePos = originPos;
 
-            this.projectileDirection = direction;
+            projectileDirection = direction * travelSpeed;
 
             //generiert den kreis zum späteren zeichen
             projDisplay = new CircleShape(2);
@@ -64,7 +63,7 @@ namespace GitGudP2
 
         public void Update(float deltaTime)
         {
-            newProjPos = projectilePos * projectileDirection;
+            newProjPos = projectilePos + projectileDirection;
             projectilePos = newProjPos;
             projDisplay.Position = projectilePos;
 

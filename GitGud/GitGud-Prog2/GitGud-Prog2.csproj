@@ -91,6 +91,7 @@
     <Compile Include="GameOver.cs" />
     <Compile Include="GPLevel.cs" />
     <Compile Include="InputManager.cs" />
+    <Compile Include="Interface.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="NPCinteraction.cs" />
     <Compile Include="Player.cs" />

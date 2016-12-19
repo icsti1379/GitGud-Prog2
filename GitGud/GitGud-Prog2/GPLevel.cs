@@ -25,13 +25,16 @@ namespace GitGudP2
         Clock clock;
         Text text;
         Font font;
+        CollisionHandling collisionHandling;
         private SoundBuffer shootSoundBuffer, deathSoundBuffer;
         private Sound shootSound, deathSound;
         private Music gameMusic;
         string textContent, textcontent2;
+        Interface _interface;
 
         int enemyCounter, maxScore;
         bool pHasFired;
+        private Vector2f projDirection;
 
         /// <summary>
         /// Konstruktor, Übergabewerte sind dazu da die attribute des Spielers bei zu behalten
@@ -54,6 +57,8 @@ namespace GitGudP2
             shootSound = new Sound(shootSoundBuffer);
             deathSoundBuffer = new SoundBuffer("Sounds/death.wav");
             deathSound = new Sound(deathSoundBuffer);
+            _interface = new Interface();
+            collisionHandling = new CollisionHandling();
         }
 
         public override GameStates Update()
@@ -85,9 +90,26 @@ namespace GitGudP2
 
             if (pHasFired)
             {
-                projList.Add(new Projectile(playerPos, 1));
+                switch (player.CurrentState)
+                {
+                    case CharacterState.MovingUp:
+                        projDirection = new Vector2f(0, 1);
+                        break;
+                    case CharacterState.MovingDown:
+                        projDirection = new Vector2f(0, -1);
+                        break;
+                    case CharacterState.MovingLeft:
+                        projDirection = new Vector2f(-1, 0);
+                        break;
+                    case CharacterState.MovingRight:
+                        projDirection = new Vector2f(1, 0);
+                        break;
+
+                }
+                projList.Add(new Projectile(playerPos, projDirection));
                 shootSound.Play();
             }
+
             //überprüft ob ein projektil einen gegner getroffen hat und handelt
             foreach (Enemy enemy in enemyList)
             {
@@ -101,9 +123,22 @@ namespace GitGudP2
                         enemyList.Remove(enemy);
                         projList.Remove(proj);
                         deathSound.Play();
+                        player.SubstractQuestScore();
                     }
                 }
             }
+
+            //player.setPlayerPos(collisionHandling.WithTerrain(map.GetColRect, player.getPlayerPos, 64));
+
+            //foreach (Enemy enemy in enemyList)
+            //{
+            //    enemy.SetEnemyPos(collisionHandling.WithTerrain(map.GetColRect, enemy.EnemyPos, 64));
+            //}
+
+            _interface.SetPlayerLife(player.GetLife());
+            _interface.SetPlayerPoints((int)player.GetCoins());
+            _interface.SetPlayerScore(player.GetPlayerScore());
+            _interface.SetQuestCount(player.GetQuestScore());
 
             //setzen des aktuellen Punktestandes
             textContent = Convert.ToString(player.GetPlayerScore());

@@ -108,6 +108,11 @@ namespace GitGudP2
             return enemyPos;
         }
 
+        public void SetEnemyPos(Vector2f pos)
+        {
+            enemyPos = pos;
+        }
+
         /// <summary>
         /// setter um die aktuelle positions des spielers zu bekommen
         /// für waypoints benötigt

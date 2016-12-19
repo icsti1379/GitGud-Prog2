@@ -71,7 +71,6 @@ namespace GitGudP2
                 else
                     pos = newPos;
             }
-            //newPos.X = 
             return newPos;
         }
 
