@@ -12,6 +12,9 @@ using SFML.Audio;
 
 namespace GitGudP2
 {
+    //Benny: im input manager member zum speichern der states schreiben sowie getter/setter
+    //in der update methode oder beim initieren der states, wo auch der input manager initiiert wird
+    //dann inputmanager.setstatet den aktuellen state übergeben
     public class StateMachine
     {
         private GameStates currentState, previousState, targetState;
