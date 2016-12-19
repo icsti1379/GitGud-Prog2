@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 using SFML.Audio;
@@ -20,6 +21,8 @@ namespace GitGudP2
     }
     class AnimatedCharacter
     {
+
+
         public float Xpos { get; set; }
         public float Ypos { get; set; }
         public int FrameSize { get; set; }
@@ -93,9 +96,9 @@ namespace GitGudP2
 
            sprite.TextureRect = spriteRect;
         }
-        public void Draw(RenderWindow window)
+        public void Draw()
         {
-            window.Draw(sprite);
+            Game.WindowInstance().Draw(sprite);
         }
     }
 }

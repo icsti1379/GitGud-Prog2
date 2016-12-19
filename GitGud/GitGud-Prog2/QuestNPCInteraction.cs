@@ -59,9 +59,9 @@ namespace GitGudP2
             base.Update();
         }
 
-        public override void Draw(RenderWindow renderWindow)
+        public override void Draw()
         {
-            base.Draw(renderWindow);
+            base.Draw();
         }
     }
 }

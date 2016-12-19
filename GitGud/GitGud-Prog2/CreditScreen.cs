@@ -14,24 +14,56 @@ namespace GitGudP2
 {
     public class CreditScreen : State
     {
+        private Text creditScreenText, creditScreenText1, creditScreenText2;
+        private Font creditScreenFont;
+
+        private Texture creditsScreen;
+        private Sprite creditSprite;
+
+        private GameStates targetState;
+
+        public CreditScreen()
+        {
+            creditScreenFont = new Font("Font/arial.ttf");
+            creditScreenText = new Text("CREDITSCREEN", creditScreenFont, 46);
+            creditScreenText.Position = new Vector2f(550, 200);
+            creditScreenText1 = new Text("Nikolas Pietrek.", creditScreenFont, 32);
+            creditScreenText1.Position = new Vector2f(580, 360);
+
+            creditScreenText2 = new Text("Benjamin Lehnert.", creditScreenFont, 32);
+            creditScreenText2.Position = new Vector2f(580, 440);
+
+            creditsScreen = new Texture("Pictures/creditsscreen_background.jpg");
+            creditSprite = new Sprite(creditSprite);
+
+            targetState = GameStates.CreditScreenState;
+        }
         public override void Dispose()
         {
-            throw new NotImplementedException();
+
+        }
+
+        public override void Draw()
+        {
+            Game.WindowInstance().Draw(creditSprite);
+        }
+
+        public override void HandleInput(Keyboard.Key key, bool isPressed)
+        {
+            if(isPressed && (key == Keyboard.Key.Return || key == Keyboard.Key.Escape))
+            {
+                targetState = GameStates.MainMenuState;
+            }
         }
 
         public override void Initialize()
         {
-            throw new NotImplementedException();
+            targetState = GameStates.MainMenuState;
         }
 
         public override GameStates Update()
         {
-            throw new NotImplementedException();
-        }
-
-        public override void Draw(RenderWindow renderWindow)
-        {
-            throw new NotImplementedException();
+            return targetState;
         }
     }
 }

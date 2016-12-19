@@ -56,13 +56,13 @@ namespace GitGudP2
             reader.Close();
         }
 
-        public void Draw(RenderWindow window)
+        public void Draw()
         {
             for(int y = 0; y < mapHeight; y++)
             {
                 for(int x = 0; x < mapWidth; x++)
                 {
-                    window.Draw(tiles[x , y]);
+                    Game.WindowInstance().Draw(tiles[x , y]);
                 }
             }
         }

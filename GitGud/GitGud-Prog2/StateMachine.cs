@@ -32,13 +32,16 @@ namespace GitGudP2
             Initialize();
         }
 
+        /// <summary>
+        /// Initialize different states.
+        /// </summary>
         private void Initialize()
         {
-            //Sets the starting state
+            // Sets the starting state
             currentState = GameStates.SplashScreenState;
             previousState = GameStates.UnspecifiedState;
 
-            //Initializes the different states
+            // Initializes the different states
             splashScreen = new SplashScreen();
             mainMenu = new MainMenu();
             gamePlay = new GamePlay();
@@ -46,6 +49,12 @@ namespace GitGudP2
             creditScreen = new CreditScreen();
         }
 
+        /// <summary>
+        /// Initialize a specific state.
+        /// </summary>
+        /// <param name="state">
+        /// Initialized state.
+        /// </param>
         private void InitializeState(State state)
         {
             if (previousState != currentState)
@@ -65,6 +74,9 @@ namespace GitGudP2
             }
         }
 
+        /// <summary>
+        /// Checks current state and updates it.
+        /// </summary>
         public void Update()
         {
             switch (currentState)
@@ -79,6 +91,16 @@ namespace GitGudP2
                     InitializeState(mainMenu);
                     targetState = mainMenu.Update();
                     DisposeState(mainMenu);
+                    break;
+
+                case GameStates.PauseMenuState:
+                    InitializeState(pauseMenu);
+                    targetState = pauseMenu.Update();
+                    if (pauseMenu.TargetState == GameStates.MainMenuState)
+                    {
+                        gamePlay = new GamePlay();
+                    }
+                    DisposeState(pauseMenu);
                     break;
 
                 case GameStates.CreditScreenState:
@@ -109,28 +131,80 @@ namespace GitGudP2
             }
         }
 
-        public void Draw(RenderWindow renderWindow)
+
+        /// <summary>
+        /// Draws the current/active state.
+        /// </summary>
+        /// <param name="renderWindow"></param>
+        public void Draw()
         {
             switch (currentState)
             {
                 case GameStates.SplashScreenState:
-                    splashScreen.Draw(renderWindow);
+                    splashScreen.Draw();
                     break;
 
                 case GameStates.MainMenuState:
-                    mainMenu.Draw(renderWindow);
+                    mainMenu.Draw();
+                    break;
+
+                case GameStates.PauseMenuState:
+                    pauseMenu.Draw();
                     break;
 
                 case GameStates.GamePlayState:
-                    gamePlay.Draw(renderWindow);
+                    gamePlay.Draw();
                     break;
 
                 case GameStates.CreditScreenState:
-                    creditScreen.Draw(renderWindow);
+                    creditScreen.Draw();
                     break;
 
                 case GameStates.GPLevelState:
-                    gpLevel.Draw(renderWindow);
+                    gpLevel.Draw();
+                    break;
+
+                case GameStates.QuitState:
+                    Game.WindowInstance().Clear(Color.Black);
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Delegates input key for current state.
+        /// </summary>
+        /// <param name="key">
+        /// The key which is pressed.
+        /// </param>
+        /// <param name="isPressed">
+        /// Checks if key is pressed.
+        /// </param>
+        public void HandleInput(Keyboard.Key key, bool isPressed)
+        {
+            switch (currentState)
+            {
+                case GameStates.SplashScreenState:
+                    splashScreen.HandleInput(key, isPressed);
+                    break;
+
+                case GameStates.MainMenuState:
+                    mainMenu.HandleInput(key, isPressed);
+                    break;
+
+                case GameStates.PauseMenuState:
+                    pauseMenu.HandleInput(key, isPressed);
+                    break;
+
+                case GameStates.GamePlayState:
+                    gamePlay.HandleInput(key, isPressed);
+                    break;
+
+                case GameStates.GPLevelState:
+                    gpLevel.HandleInput(key, isPressed);
+                    break;
+
+                case GameStates.CreditScreenState:
+                    creditScreen.HandleInput(key, isPressed);
                     break;
             }
         }

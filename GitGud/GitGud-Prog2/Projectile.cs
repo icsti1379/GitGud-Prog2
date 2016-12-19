@@ -84,9 +84,9 @@ namespace GitGudP2
              */
         }
 
-        public void Draw(RenderWindow renderWindow)
+        public void Draw()
         {
-            renderWindow.Draw(projDisplay);
+            Game.WindowInstance().Draw(projDisplay);
             //TODO: projectile anhand der neuen Position zeichnen
         }
 

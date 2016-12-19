@@ -25,6 +25,7 @@ namespace GitGudP2
         Clock clock;
         Text text;
         Font font;
+        
         private SoundBuffer shootSoundBuffer, deathSoundBuffer;
         private Sound shootSound, deathSound;
         private Music gameMusic;
@@ -114,30 +115,37 @@ namespace GitGudP2
             //throw new NotImplementedException();
         }
 
-        public override void Draw(RenderWindow renderWindow)
+        //TODO NOCHMAL PRÜFEN OB ÜBERHAUPT DIE RICHTIGEN INPUTS ABGEFRAGT WERDEN
+        public override void HandleInput(Keyboard.Key key, bool isPressed)
         {
-            renderWindow.SetView(view);
-            renderWindow.Clear(new Color(43, 130, 53));
-            //map.Draw(renderWindow);
-            player.Draw(renderWindow);
+            player.HandleInput(key, isPressed);
+        }
+
+        public override void Draw()
+        {
+            Game.WindowInstance().SetView(view);
+            Game.WindowInstance().Clear(new Color(43, 130, 53));
+            
+
+            Game.WindowInstance().SetView(view);
+            Game.WindowInstance().Clear(new Color(43, 130, 53));
+            player.Draw();
             foreach (Enemy enemy in enemyList)
-                enemy.Draw(renderWindow);
+                enemy.Draw();
             foreach (Projectile proj in projList)
-                proj.Draw(renderWindow);
+                proj.Draw();
 
-            renderWindow.Display();
-
-            //throw new NotImplementedException();
+            Game.WindowInstance().Display();
         }
 
         public override void Dispose()
         {
-            throw new NotImplementedException();
+            
         }
 
         public override void Initialize()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

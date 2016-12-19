@@ -1,6 +1,10 @@
-﻿using System;
+﻿//TODO Overwrite HANDLE INPUT Keys
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 using SFML.Audio;
@@ -23,6 +27,12 @@ namespace GitGudP2
         int score, life, runSpeed;
         bool doubleScore;
 
+        // Mouse Detection
+        bool isShooting, mouseButtonPressed;
+        Vector2i mousePos, mouseDistanceToPlayer;
+        float mouseAngle;
+
+
         /// <summary>
         /// nachfolgend mehrere setter und getter für verschiedene Attribute des Spielers
         /// benötigt für Upgrades, Collision und andere sachen
@@ -37,6 +47,7 @@ namespace GitGudP2
         {
             this.life = life;
         }
+
         public void SetLife(bool lifeIncreased)
         {
             if (lifeIncreased)
@@ -55,7 +66,7 @@ namespace GitGudP2
 
         public void MoveSpeedUpgrade(float multiplier)
         {
-            moveSpeed = moveSpeed * multiplier;
+            moveSpeed = moveSpeed*multiplier;
         }
 
         public bool GetDoubleScore()
@@ -77,6 +88,7 @@ namespace GitGudP2
         {
             score++;
         }
+
         public Vector2f getPlayerPos()
         {
             return playerPos;
@@ -93,18 +105,66 @@ namespace GitGudP2
         }
 
         public bool Quest { get; set; }
-        public Player() : base("Sprites/male_01.png", 64)
+
+        public Player() : base("Sprites/Characters/warrior.png", 64)
         {
             Anim_Up = new Animation(512, 0, 9);
             Anim_Left = new Animation(578, 0, 9);
             Anim_Down = new Animation(640, 0, 9);
             Anim_Right = new Animation(704, 0, 9);
 
+            // Set player character attributes
             moveSpeed = 150;
             animationSpeed = 0.05f;
+
+            playerPos = new Vector2f(base.Xpos, base.Ypos);
         }
+
+        public void HandleInput(Keyboard.Key key, bool isPressed)
+        {
+            this.CurrentState = CharacterState.None;
+
+            if (isPressed && key ==Keyboard.Key.D)
+            {
+                this.CurrentState = CharacterState.MovingRight;
+            }
+            else if (isPressed && key == Keyboard.Key.A)
+            {
+                this.CurrentState = CharacterState.MovingLeft;
+            }
+            else if (isPressed && key == Keyboard.Key.W)
+            {
+                this.CurrentState = CharacterState.MovingUp;
+            }
+            else if (isPressed && key == Keyboard.Key.S)
+            {
+                this.CurrentState = CharacterState.MovingDown;
+            }
+
+            // IMPLEMENT
+            else if (isPressed && key == Keyboard.Key.E)
+            {
+                // Implement Interaction with questNPC
+            }
+            else if (isPressed && key == Keyboard.Key.Num1)
+            {
+                // Implement "Yes, start quest"
+            }
+            else if (isPressed && key == Keyboard.Key.Num2)
+            {
+                // Implement "No, do quest later"
+            }
+
+            else if (isPressed && key == Keyboard.Key.Escape)
+            {
+                
+            }
+        }
+
         public override void Update(float deltaTime)
         {
+            //PlayerRotation();
+
             hasFired = false;
 
             //falls life zu hoch ist auf max wert setzen
@@ -117,24 +177,7 @@ namespace GitGudP2
             if (doubleScore)
                 score += 2;
             //if mouseclock -> hasFired = true;
-            this.CurrentState = CharacterState.None;
 
-            if (Keyboard.IsKeyPressed(Keyboard.Key.D))
-            {
-                this.CurrentState = CharacterState.MovingRight;
-            }
-            else if (Keyboard.IsKeyPressed(Keyboard.Key.A))
-            {
-                this.CurrentState = CharacterState.MovingLeft;
-            }
-            else if (Keyboard.IsKeyPressed(Keyboard.Key.W))
-            {
-                this.CurrentState = CharacterState.MovingUp;
-            }
-            else if (Keyboard.IsKeyPressed(Keyboard.Key.S))
-            {
-                this.CurrentState = CharacterState.MovingDown;
-            }
 
             base.Update(deltaTime);
         }

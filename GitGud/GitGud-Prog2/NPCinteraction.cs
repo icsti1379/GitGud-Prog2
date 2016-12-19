@@ -97,16 +97,15 @@ namespace GitGudP2
         /// <summary>
         /// zeichnen des rechtecks sowie der texte
         /// </summary>
-        /// <param name="renderWindow"></param>
-        public virtual void Draw(RenderWindow renderWindow)
+        public virtual void Draw()
         {
             while (interactionPossible)
             {
-                renderWindow.Draw(rectangle);
-                renderWindow.Draw(text1);
-                renderWindow.Draw(text2);
-                renderWindow.Draw(text3);
-                renderWindow.Draw(text4);
+                Game.WindowInstance().Draw(rectangle);
+                Game.WindowInstance().Draw(text1);
+                Game.WindowInstance().Draw(text2);
+                Game.WindowInstance().Draw(text3);
+                Game.WindowInstance().Draw(text4);
             }
         }
     }

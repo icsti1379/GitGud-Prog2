@@ -18,8 +18,10 @@ namespace GitGudP2
 
         public abstract GameStates Update();
 
-        public abstract void Draw(RenderWindow renderWindow);
+        public abstract void Draw();
 
         public abstract void Dispose();
+
+        public abstract void HandleInput(Keyboard.Key key, bool isPressed);
     }
 }

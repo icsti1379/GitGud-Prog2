@@ -29,8 +29,13 @@ namespace GitGudP2
         /// und erzeugt ein rechteck um das sprite für die Kollisionsabfrage
         /// </summary>
         /// <param name="enemyCounter">anzahl der momentanen gegner auf der map, wird als seed für die spawn location genommen</param>
-        public Enemy(int enemyCounter) : base("Sprites/Enemy", 64)
+        public Enemy(int enemyCounter) : base("Sprites/Enemy/enemy01", 64)
         {
+            Anim_Up = new Animation(0, 0, 10);
+            Anim_Left = new Animation(64, 0, 10);
+            Anim_Down = new Animation(128, 0, 10);
+            Anim_Right = new Animation(256, 0, 10);
+
             waypoints = new List<Waypoint>();
             rand = new Random();
             seed = enemyCounter % 4;

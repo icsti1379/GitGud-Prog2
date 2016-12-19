@@ -13,7 +13,7 @@ using SFML.Audio;
 namespace GitGudP2
 {
     /// <summary>
-    /// Klasse für die Hub Map
+    /// Gameplay state which is also the hub level.
     /// </summary>
     public class GamePlay : State
     {
@@ -74,7 +74,7 @@ namespace GitGudP2
             iUpgradeNPC = new UpgradeNPCInteraction();
             iQuestNPC = new QuestNPCInteraction();
 
-            hubMusic = new Music("Music/HubSong.wav");
+            hubMusic = new Music("Music/HubSong.ogg");
             upgradSoundBuffer = new SoundBuffer("Sounds/upgrade.wav");
             upgradeSound = new Sound(upgradSoundBuffer);
         }
@@ -86,8 +86,16 @@ namespace GitGudP2
 
         public override void Initialize()
         {
+            // Initialize music and loop it 
+            hubMusic.Play();
+            hubMusic.Loop = true;
+        }
 
-            //throw new NotImplementedException();
+
+        //TODO NOCHMAL PRÜFEN OB ÜBERHAUPT DIE RICHTIGEN INPUTS ABGEFRAGT WERDEN
+        public override void HandleInput(Keyboard.Key key, bool isPressed)
+        {
+            player.HandleInput(key, isPressed);
         }
 
         public override GameStates Update()
@@ -97,8 +105,8 @@ namespace GitGudP2
             //nachfolgend werden alle entitäten auf der map geupdated
             kip.Update(deltaTime);
             player.Update(deltaTime);
-            foreach (Enemy enemy in enemyList)
-                enemy.Update(deltaTime);
+            foreach (Enemy eEnemy in enemyList)
+                eEnemy.Update(deltaTime);
             foreach (Projectile proj in projList)
                 proj.Update(deltaTime);
 
@@ -117,16 +125,16 @@ namespace GitGudP2
                 projList.Add(new Projectile(playerPos, 1));
 
             //überprüft ob ein Projektil einen Gegner getroffen hat und was danach passiert
-            foreach (Enemy enemy in enemyList)
+            foreach (Enemy eEnemy in enemyList)
             {
                 foreach (Projectile proj in projList)
                 {
-                    if (GitGudDll.Collision.Check(enemy.CollisionRect(), proj.ProjectilePos()))
+                    if (GitGudDll.Collision.Check(eEnemy.CollisionRect(), proj.ProjectilePos()))
                     {
-                        enemy.IsAlive(false);
+                        eEnemy.IsAlive(false);
                         proj.HasKilled(true);
                         player.IncreasePlayerScore(true);
-                        enemyList.Remove(enemy);
+                        enemyList.Remove(eEnemy);
                         projList.Remove(proj);
                     }
                 }
@@ -154,30 +162,26 @@ namespace GitGudP2
                 return GameStates.GPLevelState;
             else
                 return GameStates.GamePlayState;
-            //throw new NotImplementedException();
         }
 
         /// <summary>
         /// zeichnet alle sachen die gezeichnet werden müssen
         /// </summary>
-        /// <param name="renderWindow"></param>
-        public override void Draw(RenderWindow renderWindow)
+        public override void Draw()
         {
-
-            //throw new NotImplementedException();
-            renderWindow.SetView(view);
-            renderWindow.Clear(new Color(43, 130, 53));
-            map.Draw(renderWindow);
-            kip.Draw(renderWindow);
-            player.Draw(renderWindow);
-            iQuestNPC.Draw(renderWindow);
-            iUpgradeNPC.Draw(renderWindow);
+            Game.WindowInstance().SetView(view);
+            Game.WindowInstance().Clear(new Color(43, 130, 53));
+            map.Draw();
+            kip.Draw();
+            player.Draw();
+            iQuestNPC.Draw();
+            iUpgradeNPC.Draw();
             foreach (Enemy enemy in enemyList)
-                enemy.Draw(renderWindow);
+                enemy.Draw();
             foreach (Projectile proj in projList)
-                proj.Draw(renderWindow);
+                proj.Draw();
 
-            renderWindow.Display();
+            Game.WindowInstance().Display();
         }
 
     }

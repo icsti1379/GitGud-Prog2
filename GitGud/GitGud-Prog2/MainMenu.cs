@@ -13,43 +13,66 @@ namespace GitGudP2
 {
     public class MainMenu : State
     {
-        Text mainMenuMessage;
+        private Text mainMenuMessage1, mainMenuMessage2;
+        private Font mainMenuFont;
         private Music mainMenuMusic;
+        private Texture mainMenuBackground;
+        private Sprite menuSprite;
 
+        private GameStates targetState;
+        
         public MainMenu()
         {
-            mainMenuMusic = new Music("Music/MainMenuSong.wav");
-            mainMenuMessage = new Text("Press Enter to start", new Font("Font/arial.ttf"));
-            mainMenuMessage.Position = new Vector2f(50, 50);
+            mainMenuMusic = new Music("Music/MainMenuSong.ogg");
+
+            mainMenuFont = new Font("Font/arial.ttf");
+            mainMenuMessage1 = new Text("Press Enter to start the game.", mainMenuFont,28);
+            mainMenuMessage1.Position = new Vector2f(580, 380);
+
+            mainMenuMessage2 = new Text("Press C for credits screen.", mainMenuFont, 28);
+            mainMenuMessage2.Position = new Vector2f(580, 420);
+
+            mainMenuBackground = new Texture("Pictures/mainmenu_background.jpg");
+            menuSprite = new Sprite(mainMenuBackground);
+
+            targetState = GameStates.MainMenuState;
+
             Initialize();
         }
         public override void Dispose()
         {
-            //throw new notimplementedexception();
+            
         }
+
 
         public override void Initialize()
         {
-            mainMenuMusic.Play();
-            //throw new notimplementedexception();
+           mainMenuMusic.Play();
+           mainMenuMusic.Loop = true;
+           targetState = GameStates.MainMenuState;
+        }
+
+        public override void Draw()
+        {
+            Game.WindowInstance().Draw(menuSprite);
+        }
+
+        public override void HandleInput(Keyboard.Key key, bool isPressed)
+        {
+            if (isPressed && key == Keyboard.Key.Return)
+            {
+                targetState = GameStates.GamePlayState;
+            }
+
+            else if (isPressed && key == Keyboard.Key.C)
+            {
+                targetState = GameStates.CreditScreenState;
+            }
         }
 
         public override GameStates Update()
         {
-            if (Keyboard.IsKeyPressed(Keyboard.Key.Return))
-                return GameStates.GamePlayState;
-            else
-                return GameStates.MainMenuState;
-            //throw new notimplementedexception();
-        }
-
-        public override void Draw(RenderWindow renderWindow)
-        {
-            mainMenuMessage = new Text("Press Enter to start", new Font("Font/arial.ttf"));
-            mainMenuMessage.Position = new Vector2f(50, 50);
-            renderWindow.Clear(Color.Black);
-            renderWindow.Draw(mainMenuMessage);
-            renderWindow.Display();
+            return targetState;
         }
     }
 }

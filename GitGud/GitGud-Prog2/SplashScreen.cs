@@ -15,16 +15,19 @@ namespace GitGudP2
     public class SplashScreen : State
     {
         Clock clock;
-
+        Texture splashTexture;
+        Sprite splashSprite;
+        
         public SplashScreen()
         {
+            splashTexture = new Texture("Pictures/splashscreen.png");
+            splashSprite = new Sprite(splashTexture);
             Initialize();
         }
 
-
         public override void Dispose()
         {
-            //throw new NotImplementedException();
+           
         }
 
         public override void Initialize()
@@ -33,19 +36,19 @@ namespace GitGudP2
             clock.Restart();
         }
 
-        public override GameStates Update()
+        public override void HandleInput(Keyboard.Key key, bool isPressed)
         {
-            if (clock.ElapsedTime.AsSeconds() >= 1f)
-            {
-                return GameStates.MainMenuState;
-            }
-            return GameStates.SplashScreenState;
+            
         }
 
-        public override void Draw(RenderWindow renderWindow)
+        public override void Draw()
         {
-            renderWindow.Clear(Color.Blue);
-            renderWindow.Display();
+            Game.WindowInstance().Draw(splashSprite);
+        }
+
+        public override GameStates Update()
+        {
+            return GameStates.SplashScreenState;
         }
     }
 }
