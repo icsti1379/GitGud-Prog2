@@ -12,8 +12,9 @@ namespace GitGudP2
 {
     class Chicken : AnimatedCharacterWithAI
     {
-        public Chicken() : base("Sprites/chicken_walk.png", 32)
+        public Chicken() : base("Sprites/Other/chicken_walk.png", 32)
         {
+            // Define directions on spritesheet
             Anim_Up = new Animation(0, 0, 4);
             Anim_Left = new Animation(32, 0, 4);
             Anim_Down = new Animation(64, 0, 4);
