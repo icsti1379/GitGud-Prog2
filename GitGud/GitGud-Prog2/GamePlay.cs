@@ -26,6 +26,8 @@ namespace GitGudP2
         Map map;
         Chicken kip;
         Clock clock;
+        QuestNPC questNPC;
+        UpgradeNPC upgradeNPC;
         QuestNPCInteraction iQuestNPC;
         UpgradeNPCInteraction iUpgradeNPC;
         CollisionHandling collisionHandling;
@@ -66,7 +68,8 @@ namespace GitGudP2
             view = new View(new Vector2f(0, 0), new Vector2f(1200, 700));
 
             player = new Player();
-
+            //questNPC = new QuestNPC();
+            //upgradeNPC = new UpgradeNPC();
             kip = new Chicken();
 
             kip.Waypoints = new List<Waypoint>();

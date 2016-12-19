@@ -40,7 +40,7 @@ namespace GitGudP2
             {
                 stateMashine.Update();
                 stateMashine.Draw(window);
-                //window.DispatchEvents();
+                window.DispatchEvents();
 
                 //window.Clear(new Color(43, 130,53));
 

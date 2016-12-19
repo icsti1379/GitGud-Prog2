@@ -73,11 +73,20 @@ namespace GitGudP2
         public override void Update()
         {
             //if (InputManager.1)
-            //    upgrade1 = true;
+            //      if (player.coins >=5)
+            //          upgrade1 = true;
+            //      else
+            //          upgrad1 = false;
             //if (InputManager.2)
-            //    upgrade2 = true;
+            //      if (player.coins >=10)
+            //          upgrade1 = true;
+            //      else
+            //          upgrad1 = false;
             //if (InputManager.3)
-            //    upgrade3 = true;
+            //      if (player.coins >=15)
+            //          upgrade1 = true;
+            //      else
+            //          upgrad1 = false;
             //else
             //{
             //    upgrade1 = false;

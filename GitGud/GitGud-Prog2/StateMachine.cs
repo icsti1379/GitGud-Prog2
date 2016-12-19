@@ -75,43 +75,43 @@ namespace GitGudP2
             switch (currentState)
             {
                 case GameStates.SplashScreenState:
-                    InitializeState(splashScreen);
+                    //InitializeState(splashScreen);
                     targetState = splashScreen.Update();
-                    DisposeState(splashScreen);
+                    //DisposeState(splashScreen);
                     break;
 
                 case GameStates.MainMenuState:
-                    InitializeState(mainMenu);
+                    //InitializeState(mainMenu);
                     targetState = mainMenu.Update();
-                    DisposeState(mainMenu);
+                    //DisposeState(mainMenu);
                     break;
 
                 case GameStates.CreditScreenState:
-                    InitializeState(creditScreen);
+                    //InitializeState(creditScreen);
                     targetState = creditScreen.Update();
-                    DisposeState(creditScreen);
+                    //DisposeState(creditScreen);
                     break;
 
                 case GameStates.GamePlayState:
-                    InitializeState(gamePlay);
+                    //InitializeState(gamePlay);
                     targetState = gamePlay.Update();
                     if (targetState == GameStates.GPLevelState)
                     {
                         gpLevel = new GPLevel(gamePlay.GetPLayerLife(), gamePlay.GetPlayerRunSpeed(), gamePlay.GetPlayerDoubleScore(), gamePlay.GetMaxScore());
                     }
-                    DisposeState(gamePlay);
+                    //DisposeState(gamePlay);
                     break;
 
                 case GameStates.GPLevelState:
-                    InitializeState(gpLevel);
+                    //InitializeState(gpLevel);
                     targetState = gpLevel.Update();
-                    DisposeState(gpLevel);
+                    //DisposeState(gpLevel);
                     break;
 
                 case GameStates.GameOverState:
-                    InitializeState(gameOver);
+                    //InitializeState(gameOver);
                     targetState = gameOver.Update();
-                    DisposeState(gameOver);
+                    //DisposeState(gameOver);
                     break;
 
                 case GameStates.QuitState:
