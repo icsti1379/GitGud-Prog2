@@ -14,19 +14,44 @@ namespace GitGud_Prog2
 {
     public enum NormalTileType
     {
-        tile1 = 1,
-        tile2 = 2,
-        tile3 = 3,
-        tile4 = 4,
+        Bricks = 1,
+        Lava = 2,
+        Gras = 4,
+        Dirt = 5,
+        GrassideTop = 6,
+        GrassideBottom = 7,
+        GrassideRight = 8,
+        GrassideLeft = 9,
+        GrassideTopleft = 10,
+        GrassideTopright = 11,
+        GrassideBotright = 12,
+        GrassideBotleft = 13,
+        GrassideCornerTopleft = 14,
+        GrassideCornerTopright = 15,
+        GrassideCornerBotright = 16,
+        GrassideCornerBotleft = 17,
+        Grey = 18,
+        Brown = 19,
+        StoneTop = 20,
+        StoneBot = 21
     }
 
     public enum CollidableTileType
     {
-        Wall = 1,
-        Stone = 2,
-        Tree1 = 3,
-        Tree2 = 4,
+        Black = 4,
         Water = 5,
+        RiversideTop = 6,
+        RiversideBottom = 7,
+        RiversideRight = 8,
+        RiversideLeft = 9,
+        RiversideTopleft= 10,
+        RiversideTopright = 11,
+        RiversideBotright = 12,
+        RiversideBotleft = 13,
+        RiversideCornerTopleft = 14,
+        RiversideCornerTopright = 15,
+        RiversideCornerBotright = 16,
+        RiversideCornerBotleft = 17,
     }
     public abstract class Tiles
     {
