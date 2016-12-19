@@ -16,7 +16,6 @@ namespace GitGud_Prog2
     {
         Bricks = 1,
         Lava = 2,
-        Black = 3,
         Gras = 4,
         Dirt = 5,
         GrassideTop = 6,
@@ -39,10 +38,7 @@ namespace GitGud_Prog2
 
     public enum CollidableTileType
     {
-        Wall = 1,
-        Stone = 2,
-        Tree1 = 3,
-        Tree2 = 4,
+        Black = 4,
         Water = 5,
         RiversideTop = 6,
         RiversideBottom = 7,

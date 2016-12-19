@@ -29,10 +29,6 @@ namespace GitGud_Prog2
                     texture = new Texture("Maps/terrain.png", new IntRect(new Vector2i(11 * 32, 16 * 32), new Vector2i(32, 32)));
                     break;
 
-                case NormalTileType.Black:
-                    texture = new Texture("Maps/terrain.png", new IntRect(new Vector2i(17 * 32, 4 * 32), new Vector2i(32, 32)));
-                    break;
-
                 case NormalTileType.Grey:
                     texture = new Texture("Maps/terrain.png", new IntRect(new Vector2i(8 * 32, 23 * 32), new Vector2i(32, 32)));
                     break;

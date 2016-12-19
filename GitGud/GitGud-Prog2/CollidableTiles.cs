@@ -22,20 +22,8 @@ namespace GitGud_Prog2
             //TODO CORRECT TILE PATH
             switch (type)
             {
-                case CollidableTileType.Wall:
-                    texture = new Texture("path-to-tilesheet_and-id");
-                    break;
-
-                case CollidableTileType.Stone:
-                    texture = new Texture("path-to-tilesheet_and-id");
-                    break;
-
-                case CollidableTileType.Tree1:
-                    texture = new Texture("path-to-tilesheet_and-id");
-                    break;
-
-                case CollidableTileType.Tree2:
-                    texture = new Texture("path-to-tilesheet_and-id");
+                case NormalTileType.Black:
+                    texture = new Texture("Maps/terrain.png", new IntRect(new Vector2i(17 * 32, 4 * 32), new Vector2i(32, 32)));
                     break;
 
                 case CollidableTileType.Water:
@@ -96,6 +84,11 @@ namespace GitGud_Prog2
             sprite.Position = position;
 
             colRect = new IntRect((int)position.X, (int)position.Y, 32, 32);
+        }
+
+        public IntRect GetColRect()
+        {
+            return colRect;
         }
     }
 }
