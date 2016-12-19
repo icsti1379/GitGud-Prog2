@@ -36,6 +36,7 @@ namespace GitGudP2
 
         public override GameStates Update()
         {
+            
             if (Keyboard.IsKeyPressed(Keyboard.Key.Return))
                 return GameStates.GamePlayState;
             else

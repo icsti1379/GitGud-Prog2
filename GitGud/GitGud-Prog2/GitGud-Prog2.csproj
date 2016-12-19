@@ -146,9 +146,15 @@
     <Content Include="libsndfile-1.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Music\GameSong1.wav" />
-    <Content Include="Music\HubSong.wav" />
-    <Content Include="Music\MainMenuSong.wav" />
+    <Content Include="Music\GameSong1.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Music\HubSong.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Music\MainMenuSong.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="openal32.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -162,9 +168,15 @@
     <Content Include="sfmlnet-graphics-2.dll" />
     <Content Include="sfmlnet-system-2.dll" />
     <Content Include="sfmlnet-window-2.dll" />
-    <Content Include="Sounds\death.wav" />
-    <Content Include="Sounds\shoot.wav" />
-    <Content Include="Sounds\upgrade.wav" />
+    <Content Include="Sounds\death.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\shoot.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\upgrade.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Sprites\chicken_walk.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
