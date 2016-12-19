@@ -10,22 +10,113 @@ using SFML.Window;
 
 namespace GitGudP2
 {
+    /// <summary>
+    /// Player Grundklasse
+    /// </summary>
     class Player : AnimatedCharacter
     {
-         public Player() : base("Sprites/Characters/warrior.png", 64)
+        //TODO: überall wo playerposition verwendet wird, muss diese erst von tilemap pos auf normal pos umgerechnet werden
+        // überlegen wie score in coins umgerechnet wird
+        //movespeedupgrade auf movespeed anwenden
+        Vector2f playerPos;
+        bool quest, hasFired;
+        int score, life, runSpeed;
+        bool doubleScore;
+
+        /// <summary>
+        /// nachfolgend mehrere setter und getter für verschiedene Attribute des Spielers
+        /// benötigt für Upgrades, Collision und andere sachen
+        /// </summary>
+        /// <returns></returns>
+        public int GetLife()
         {
-            // Define directions on spritesheet
+            return life;
+        }
+
+        public void SetLife(int life)
+        {
+            this.life = life;
+        }
+        public void SetLife(bool lifeIncreased)
+        {
+            if (lifeIncreased)
+                life++;
+        }
+
+        public float GetMoveSpeed()
+        {
+            return moveSpeed;
+        }
+
+        public void SetMoveSpeed(float moveSpeed)
+        {
+            this.moveSpeed = moveSpeed;
+        }
+
+        public void MoveSpeedUpgrade(float multiplier)
+        {
+            moveSpeed = moveSpeed * multiplier;
+        }
+
+        public bool GetDoubleScore()
+        {
+            return doubleScore;
+        }
+
+        public void SetDoubleScore(bool doubleScore)
+        {
+            this.doubleScore = doubleScore;
+        }
+
+        public int GetPlayerScore()
+        {
+            return score;
+        }
+
+        public void IncreasePlayerScore(bool scoreIncrease)
+        {
+            score++;
+        }
+        public Vector2f getPlayerPos()
+        {
+            return playerPos;
+        }
+
+        public void setPlayerPos(Vector2f pos)
+        {
+            playerPos = pos;
+        }
+
+        public bool HasFired()
+        {
+            return hasFired;
+        }
+
+        public bool Quest { get; set; }
+        public Player() : base("Sprites/male_01.png", 64)
+        {
             Anim_Up = new Animation(512, 0, 9);
             Anim_Left = new Animation(578, 0, 9);
             Anim_Down = new Animation(640, 0, 9);
             Anim_Right = new Animation(704, 0, 9);
 
-            // Set moving and animation speed
-            moveSpeed = 200;
+            moveSpeed = 150;
             animationSpeed = 0.05f;
         }
         public override void Update(float deltaTime)
         {
+            hasFired = false;
+
+            //falls life zu hoch ist auf max wert setzen
+            if (life > 5)
+                life = 5;
+
+            //regelt was bei doublescore passiert
+            if (!doubleScore)
+                score++;
+            if (doubleScore)
+                score += 2;
+            //if mouseclock -> hasFired = true;
             this.CurrentState = CharacterState.None;
 
             if (Keyboard.IsKeyPressed(Keyboard.Key.D))
@@ -47,26 +138,5 @@ namespace GitGudP2
 
             base.Update(deltaTime);
         }
-
-        //protected void PlayerRotation()
-        //{
-        //    // Calculating Mouse Position using the Character Position as Origin
-        //    vMousePositionFromPlayer = (Vector2i)CharacterPosition + new Vector2i(25, 25) - Input.vMousePosition;
-
-
-        //    // Calculating Angle of the Mouse Position relative to the Character
-        //    iAngle = (float)Math.Acos((vMousePositionFromPlayer.X * 0 + vMousePositionFromPlayer.Y * 1) /
-                                            //(Math.Sqrt(Math.Pow(vMousePositionFromPlayer.X, 2) + Math.Pow(vMousePositionFromPlayer.Y, 2)) * Math.Sqrt(Math.Pow(0, 2) + Math.Pow(1, 2))));
-
-        //    iAngle = (iAngle / (float)Math.PI * 180);
-
-        //    if (vMousePositionFromPlayer.X > 0)
-        //        iAngle = 360 - iAngle;
-
-
-        //    // Rotating Character
-        //    sEntity.Origin = new Vector2f(25, 25);
-        //    sEntity.Rotation = iAngle;
-        //}
     }
 }
