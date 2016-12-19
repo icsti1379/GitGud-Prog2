@@ -15,7 +15,7 @@ namespace GitGudP2
     class Interface
     {
         int playerLife, playerScore, playerPoints, questCount;
-        RectangleShape rectangle;
+        RectangleShape interfaceBackgroundRect, lifeRect;
         Text lifeText, scoreText, pointsText, questText;
         string textContentLife, textContentScore, textContentPoints, textContentQuest;
         Font font;
@@ -41,14 +41,18 @@ namespace GitGudP2
         }
         public Interface()
         {
-            rectangle = new RectangleShape(new Vector2f(1280,50));
-            rectangle.Position = new Vector2f(0, 750);
-            rectangle.FillColor = new Color(100, 100, 100);
-            rectangle.OutlineColor = Color.Red;
+            interfaceBackgroundRect = new RectangleShape(new Vector2f(1280,50));
+            interfaceBackgroundRect.Position = new Vector2f(0, 750);
+            interfaceBackgroundRect.FillColor = new Color(100, 100, 100);
+            interfaceBackgroundRect.OutlineColor = Color.Red;
+            lifeRect = new RectangleShape(new Vector2f(100, 15));
+            lifeRect.Position = new Vector2f(50, 780);
+            lifeRect.FillColor = Color.Red;
+            lifeRect.OutlineColor = Color.Black;
             font = new Font("Font/arial.ttf");
-            lifeText = new Text(textContentLife, font);
-            lifeText.Color = Color.Black;
-            lifeText.Position = new Vector2f(50, 780);
+            //lifeText = new Text(textContentLife, font);
+            //lifeText.Color = Color.Black;
+            //lifeText.Position = new Vector2f(50, 780);
             scoreText = new Text(textContentScore, font);
             scoreText.Color = Color.Black;
             scoreText.Position = new Vector2f(1000, 760);
@@ -62,7 +66,8 @@ namespace GitGudP2
 
         public void Update()
         {
-            textContentLife = "Life : " + playerLife.ToString();
+            lifeRect.Size = new Vector2f(playerLife * 20, 15);
+            //textContentLife = "Life : " + playerLife.ToString();
             textContentScore = "Score : " + playerScore.ToString();
             textContentPoints = "Points : " + playerPoints.ToString();
             textContentQuest = "Remaining Monsters to kill : " + questCount.ToString();
@@ -70,8 +75,9 @@ namespace GitGudP2
 
         public void Draw(RenderWindow renderWindow)
         {
-            renderWindow.Draw(rectangle);
-            renderWindow.Draw(lifeText);
+            renderWindow.Draw(interfaceBackgroundRect);
+            //renderWindow.Draw(lifeText);
+            renderWindow.Draw(lifeRect);
             renderWindow.Draw(scoreText);
             renderWindow.Draw(pointsText);
             renderWindow.Draw(questText);
