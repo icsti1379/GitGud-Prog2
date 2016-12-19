@@ -22,6 +22,7 @@ namespace GitGudP2
     {
         public float Xpos { get; set; }
         public float Ypos { get; set; }
+        public int FrameSize { get; set; }
 
         private Sprite sprite;
         private IntRect spriteRect;
