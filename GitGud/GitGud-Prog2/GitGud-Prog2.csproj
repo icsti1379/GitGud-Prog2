@@ -219,15 +219,12 @@
     <Content Include="Music\GameSong1.ogg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Music\GameSong1.wav" />
     <Content Include="Music\HubSong.ogg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Music\HubSong.wav" />
     <Content Include="Music\MainMenuSong.ogg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Music\MainMenuSong.wav" />
     <Content Include="openal32.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
