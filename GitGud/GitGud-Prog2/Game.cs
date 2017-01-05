@@ -45,7 +45,7 @@ namespace GitGudP2
             WindowInstance().KeyPressed += (o, a) => HandleKeyInput(a.Code, true);
             WindowInstance().KeyReleased += (o, a) => HandleKeyInput(a.Code, false);
 
-            // As long as CurrentState is not QuitStae, hold GameLoop active
+            // As long as CurrentState is not QuitState, hold GameLoop active
             while (stateMachine.CurrentState != GameStates.QuitState)
             {
                 GameLoop();
