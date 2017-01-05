@@ -106,7 +106,7 @@ namespace GitGudP2
 
         public bool Quest { get; set; }
 
-        public Player() : base("Sprites/Characters/warrior.png", 64)
+        public Player() : base("Sprites/Character/warrior.png", 64)
         {
             Anim_Up = new Animation(512, 0, 9);
             Anim_Left = new Animation(578, 0, 9);
