@@ -38,6 +38,8 @@ namespace GitGudP2
         private SoundBuffer upgradeSoundBuffer;
         private Sound upgradeSound;
 
+        private GameStates targetState;
+
         /// <summary>
         /// nachfolgend 3 getter um die attribute vom spieler zwischen den verschiedenen gameplay states bei zu behalten
         /// </summary>
@@ -96,10 +98,16 @@ namespace GitGudP2
         }
 
 
-        //TODO NOCHMAL PRÜFEN OB ÜBERHAUPT DIE RICHTIGEN INPUTS ABGEFRAGT WERDEN
+        //TODO: Fix bugging movement
         public override void HandleInput(Keyboard.Key key, bool isPressed)
         {
             player.HandleInput(key, isPressed);
+
+            //TODO: Fix this
+            if (isPressed && key == Keyboard.Key.Escape)
+            {
+                targetState = GameStates.PauseMenuState;
+            } 
         }
 
         public override GameStates Update()

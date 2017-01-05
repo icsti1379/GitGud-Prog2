@@ -68,6 +68,11 @@ namespace GitGudP2
             {
                 targetState = GameStates.CreditScreenState;
             }
+
+            else if (isPressed && key == Keyboard.Key.Escape)
+            {
+                targetState = GameStates.QuitState;
+            }
         }
 
         public override GameStates Update()
