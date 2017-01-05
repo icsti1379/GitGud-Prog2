@@ -18,7 +18,7 @@ namespace GitGudP2
         IntRect interactionRect;
         Vector2f position;
         NPCinteraction UpgradeNPCInteraction;
-        public UpgradeNPC() : base("Sprites/UpgradeNPC", 64)
+        public UpgradeNPC() : base("Sprites/UpgradeNPC.png", 64)
         {
             interactionRect = new IntRect((int)position.X - 5, (int)position.Y - 5, 74, 74);
             UpgradeNPCInteraction = new UpgradeNPCInteraction();

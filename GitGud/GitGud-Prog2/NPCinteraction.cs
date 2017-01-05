@@ -48,7 +48,7 @@ namespace GitGudP2
         /// </summary>
         public NPCinteraction()
         {
-            font = new Font("Font/arial.ttf");
+            font = new Font("Font/8bitWonder.ttf");
             text1Pos = new Vector2f(420, 220);
             text2Pos = new Vector2f(420, 240);
             text3Pos = new Vector2f(420, 260);

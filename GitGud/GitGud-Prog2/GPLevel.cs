@@ -43,16 +43,16 @@ namespace GitGudP2
         public GPLevel(int playerLife, float playerRunSpeed, bool playerDoubleScore)
         {
             player = new Player();
-            font = new Font("Font/arial.ttf");
+            font = new Font("Font/8bitWonder.ttf");
             player.SetLife(playerLife);
             player.SetMoveSpeed(playerRunSpeed);
             player.SetDoubleScore(playerDoubleScore);
             view = new View(new Vector2f(0, 0), new Vector2f(1200, 700));
-            gameMusic = new Music("Music/GameSong1.wav");
+            gameMusic = new Music("Music/GamePlaySong.wav");
             gameMusic.Play();
-            shootSoundBuffer = new SoundBuffer("Sounds/shoot.wav");
+            shootSoundBuffer = new SoundBuffer("Sounds/ShootingSound.wav");
             shootSound = new Sound(shootSoundBuffer);
-            deathSoundBuffer = new SoundBuffer("Sounds/death.wav");
+            deathSoundBuffer = new SoundBuffer("Sounds/DeathSound.wav");
             deathSound = new Sound(deathSoundBuffer);
         }
 

@@ -35,7 +35,7 @@ namespace GitGudP2
         Vector2f playerPos, projectilePos;
         private bool pHasFired, questAccepted;
         private Music hubMusic;
-        private SoundBuffer upgradSoundBuffer;
+        private SoundBuffer upgradeSoundBuffer;
         private Sound upgradeSound;
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace GitGudP2
             iQuestNPC = new QuestNPCInteraction();
 
             hubMusic = new Music("Music/HubSong.ogg");
-            upgradSoundBuffer = new SoundBuffer("Sounds/upgrade.wav");
-            upgradeSound = new Sound(upgradSoundBuffer);
+            upgradeSoundBuffer = new SoundBuffer("Sounds/UpgradeSound.wav");
+            upgradeSound = new Sound(upgradeSoundBuffer);
         }
 
         public override void Dispose()
