@@ -29,7 +29,7 @@ namespace GitGudP2
         {
             pauseMenuMusic = new Music("Music/MainMenuSong.ogg");
 
-            pauseMenuFont = new Font("Font/arial.ttf");
+            pauseMenuFont = new Font("Font/8bitWonder.ttf");
             pauseMenuText1 = new Text("Press 1 to continue the game.", pauseMenuFont, 28);
             pauseMenuText1.Position = new Vector2f(580, 380);
             

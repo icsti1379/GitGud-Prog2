@@ -22,7 +22,7 @@ namespace GitGudP2
 
         public SplashScreen()
         {
-            splashScreenFont = new Font("Font/arial.ttf");
+            splashScreenFont = new Font("Font/8bitWonder.ttf");
             splashScreenMessage = new Text("GitGudP2", splashScreenFont, 128);
             splashScreenMessage.Position = new Vector2f(400, 320);
 

@@ -24,7 +24,7 @@ namespace GitGudP2
 
         public CreditScreen()
         {
-            creditScreenFont = new Font("Font/arial.ttf");
+            creditScreenFont = new Font("Font/8bitWonder.ttf");
             creditScreenText = new Text("CREDITSCREEN", creditScreenFont, 46);
             creditScreenText.Position = new Vector2f(550, 200);
             creditScreenText1 = new Text("Nikolas Pietrek.", creditScreenFont, 32);

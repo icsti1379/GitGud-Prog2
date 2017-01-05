@@ -25,7 +25,7 @@ namespace GitGudP2
         {
             mainMenuMusic = new Music("Music/MainMenuSong.ogg");
 
-            mainMenuFont = new Font("Font/arial.ttf");
+            mainMenuFont = new Font("Font/8bitWonder.ttf");
             mainMenuMessage1 = new Text("Press Enter to start the game.", mainMenuFont,64);
             mainMenuMessage1.Position = new Vector2f(300, 300);
 
