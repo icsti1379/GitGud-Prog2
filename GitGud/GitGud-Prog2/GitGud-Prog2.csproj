@@ -186,9 +186,6 @@
     <None Include="Font\8bitWonder.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Font\arial.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="Maps\hub_map.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
