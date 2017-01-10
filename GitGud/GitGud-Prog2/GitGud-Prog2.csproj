@@ -106,9 +106,7 @@
     <Compile Include="CollisionHandling.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="CreditScreen.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
+    <Compile Include="CreditScreen.cs" />
     <Compile Include="Enemy.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
