@@ -106,32 +106,16 @@
     <Compile Include="CollisionHandling.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="CreditScreen.cs" />
     <Compile Include="Enemy.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Game.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="GamePlay.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="GameStates.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="GPLevel.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="MainMenu.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
     <Compile Include="Map.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="NPCinteraction.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="PauseMenu.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Player.cs">
@@ -152,15 +136,15 @@
     <Compile Include="QuestNPCInteraction.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="SplashScreen.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="State.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="StateMachine.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
+    <Compile Include="StateMachine\CreditScreen.cs" />
+    <Compile Include="StateMachine\GamePlay.cs" />
+    <Compile Include="StateMachine\GameStates.cs" />
+    <Compile Include="StateMachine\GPLevel.cs" />
+    <Compile Include="StateMachine\MainMenu.cs" />
+    <Compile Include="StateMachine\PauseMenu.cs" />
+    <Compile Include="StateMachine\SplashScreen.cs" />
+    <Compile Include="StateMachine\State.cs" />
+    <Compile Include="StateMachine\StateMachine.cs" />
     <Compile Include="Tiles.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
