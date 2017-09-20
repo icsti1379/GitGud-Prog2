@@ -37,6 +37,8 @@ namespace GitGudP2
         private Music hubMusic;
         private SoundBuffer upgradeSoundBuffer;
         private Sound upgradeSound;
+        List<IntRect> collisionTiles;
+        CollisionHandling colHandling = new CollisionHandling();
 
         private GameStates targetState;
 
@@ -60,7 +62,8 @@ namespace GitGudP2
         }
         public GamePlay()
         {
-            map = new Map();
+            map = new Map(21, 23);
+            collisionTiles = map.getTerrainColList();
             view = new View(new Vector2f(0, 0), new Vector2f(1200, 700));
 
             player = new Player();
@@ -113,6 +116,9 @@ namespace GitGudP2
         public override GameStates Update()
         {
             float deltaTime = clock.Restart().AsSeconds();
+
+            playerPos = colHandling.WithTerrain(collisionTiles, playerPos, 32);
+            player.setPlayerPos(playerPos);
 
             //while (enemyCounter < 20)
             //{

@@ -10,19 +10,28 @@ using SFML.Window;
 using System.IO;
 
 namespace GitGudP2
-{
+{ 
     class Map
     {
+
         Sprite[,] tiles;
 
         // Define map size
         int mapWidth = 20;
         int mapHeight = 20;
 
-        public Map()
+        List<IntRect> collisionList = new List<IntRect>();
+        List<int> collisionTiles = new List<int>() { 366, 367, 368, 355, 291 };
+
+        public List<IntRect> getTerrainColList()
         {
-            int tilemapWidth = 21;
-            int tilemapHeight = 23;
+            return collisionList;
+        }
+
+        public Map(int tilemapW, int tilemapH)
+        {
+            int tilemapWidth = tilemapW;
+            int tilemapHeight = tilemapH;
             int tileSize = 32;
 
             Texture texture = new Texture("Maps/terrain.png");
@@ -48,6 +57,9 @@ namespace GitGudP2
                 for (int x = 0; x < mapWidth; x++)
                 {
                     int id = Convert.ToInt32(items[x]);
+                    if (collisionTiles.Contains(id))
+                        collisionList.Add(new IntRect(new Vector2i(tileSize * x, tileSize * y), new Vector2i(32, 32)));
+
                     tiles[x , y] = new Sprite(tilemap[id]);
                     tiles[x, y].Position = new Vector2f(tileSize * x, tileSize * y);
                 }
