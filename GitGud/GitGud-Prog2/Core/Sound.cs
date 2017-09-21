@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GitGud_Prog2.Core
+namespace GitGud_Prog2
 {
     class Sound
     {

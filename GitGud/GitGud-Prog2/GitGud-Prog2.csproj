@@ -108,8 +108,10 @@
     </Compile>
     <Compile Include="Core\Entity.cs" />
     <Compile Include="Core\Input.cs" />
+    <Compile Include="Core\Music.cs" />
     <Compile Include="Core\Scene.cs" />
     <Compile Include="Core\Session.cs" />
+    <Compile Include="Core\Sound.cs" />
     <Compile Include="Enemy.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
@@ -161,6 +163,8 @@
     <Compile Include="UpgradeNPCInteraction.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Utility\EventRouter.cs" />
+    <Compile Include="Utility\Util.cs" />
     <Compile Include="Waypoint.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
